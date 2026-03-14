@@ -217,6 +217,34 @@ export type WASendableProduct = Omit<proto.Message.ProductMessage.IProductSnapsh
 	productImage: WAMediaUpload
 }
 
+export type WAInteractiveMessageContent = {
+	header?: string
+	title?: string
+	body?: string
+	footer?: string
+	buttons?: proto.Message.InteractiveMessage.NativeFlowMessage.INativeFlowButton[]
+	nativeFlowMessage?: proto.Message.InteractiveMessage.INativeFlowMessage
+	contextInfo?: proto.IContextInfo
+	externalAdReply?: proto.ContextInfo.IExternalAdReplyInfo
+} & (
+	| ({
+			image: WAMediaUpload
+			jpegThumbnail?: string
+	  } & WithDimensions)
+	| ({
+			video: WAMediaUpload
+			jpegThumbnail?: string
+			gifPlayback?: boolean
+	  } & WithDimensions)
+	| {
+			document: WAMediaUpload
+			mimetype: string
+			fileName?: string
+			jpegThumbnail?: string
+	  }
+	| {}
+)
+
 export type AnyRegularMessageContent = (
 	| ({
 			text: string
@@ -264,6 +292,9 @@ export type AnyRegularMessageContent = (
 			businessOwnerJid?: string
 			body?: string
 			footer?: string
+	  }
+	| {
+			interactiveMessage: WAInteractiveMessageContent
 	  }
 	| SharePhoneNumber
 	| RequestPhoneNumber

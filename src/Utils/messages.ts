@@ -396,7 +396,51 @@ export const generateWAMessageContent = async (
 	options: MessageContentGenerationOptions
 ) => {
 	let m: WAMessageContent = {}
-	if (hasOptionalProperty(message, 'buttons') || hasOptionalProperty(message, 'templateButtons')) {
+	if (hasNonNullishProperty(message, 'interactiveMessage')) {
+		const interactive = message.interactiveMessage
+		const interactiveButtons = [
+			...(interactive.nativeFlowMessage?.buttons || []),
+			...(interactive.buttons || [])
+		]
+
+		let header: proto.Message.InteractiveMessage.IHeader = {
+			title: interactive.header || '',
+			hasMediaAttachment: false
+		}
+
+		if ('image' in interactive || 'video' in interactive || 'document' in interactive) {
+			const mediaMsg = await prepareWAMessageMedia(interactive as AnyMediaMessageContent, options)
+			header = {
+				...header,
+				hasMediaAttachment: true,
+				...mediaMsg
+			}
+		}
+
+		const contextInfo = interactive.contextInfo || {}
+		if (interactive.externalAdReply) {
+			contextInfo.externalAdReply = interactive.externalAdReply
+		}
+
+		m.viewOnceMessage = {
+			message: {
+				messageContextInfo: {
+					deviceListMetadata: {},
+					deviceListMetadataVersion: 2
+				},
+				interactiveMessage: {
+					header,
+					body: { text: interactive.body || interactive.title || '' },
+					footer: { text: interactive.footer || '' },
+					contextInfo,
+					nativeFlowMessage: {
+						...interactive.nativeFlowMessage,
+						buttons: interactiveButtons
+					}
+				}
+			}
+		}
+	} else if (hasOptionalProperty(message, 'buttons') || hasOptionalProperty(message, 'templateButtons')) {
 		const buttons = message.buttons || []
 		const templateButtons = message.templateButtons || []
 		
