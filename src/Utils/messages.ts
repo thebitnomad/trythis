@@ -660,12 +660,20 @@ export const generateWAMessageContent = async (
 			}
 		}
 
-		m.interactiveMessage = {
-			header,
-			body: { text: message.text || message.caption || '' },
-			footer: { text: message.footer || '' },
-			nativeFlowMessage: {
-				buttons: interactiveButtons
+		m.viewOnceMessage = {
+			message: {
+				messageContextInfo: {
+					deviceListMetadata: {},
+					deviceListMetadataVersion: 2
+				},
+				interactiveMessage: {
+					header,
+					body: { text: (message as any).text || (message as any).caption || '' },
+					footer: { text: (message as any).footer || '' },
+					nativeFlowMessage: {
+						buttons: interactiveButtons
+					}
+				}
 			}
 		}
 	} else if (hasOptionalProperty(message, 'sections')) {
@@ -683,18 +691,26 @@ export const generateWAMessageContent = async (
 			}
 		}
 
-		m.interactiveMessage = {
-			header,
-			body: { text: (message as any).text || (message as any).caption || '' },
-			footer: { text: (message as any).footer || '' },
-			nativeFlowMessage: {
-				buttons: [{
-					name: 'single_select',
-					buttonParamsJson: JSON.stringify({
-						title: (message as any).buttonText || 'Menu',
-						sections: (message as any).sections
-					})
-				}]
+		m.viewOnceMessage = {
+			message: {
+				messageContextInfo: {
+					deviceListMetadata: {},
+					deviceListMetadataVersion: 2
+				},
+				interactiveMessage: {
+					header,
+					body: { text: (message as any).text || (message as any).caption || '' },
+					footer: { text: (message as any).footer || '' },
+					nativeFlowMessage: {
+						buttons: [{
+							name: 'single_select',
+							buttonParamsJson: JSON.stringify({
+								title: (message as any).buttonText || 'Menu',
+								sections: (message as any).sections
+							})
+						}]
+					}
+				}
 			}
 		}
 	} else {
