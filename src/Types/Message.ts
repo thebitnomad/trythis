@@ -217,34 +217,6 @@ export type WASendableProduct = Omit<proto.Message.ProductMessage.IProductSnapsh
 	productImage: WAMediaUpload
 }
 
-export type WAInteractiveMessageContent = {
-	header?: string
-	title?: string
-	body?: string
-	footer?: string
-	buttons?: proto.Message.InteractiveMessage.NativeFlowMessage.INativeFlowButton[]
-	nativeFlowMessage?: proto.Message.InteractiveMessage.INativeFlowMessage
-	contextInfo?: proto.IContextInfo
-	externalAdReply?: proto.ContextInfo.IExternalAdReplyInfo
-} & (
-	| ({
-			image: WAMediaUpload
-			jpegThumbnail?: string
-	  } & WithDimensions)
-	| ({
-			video: WAMediaUpload
-			jpegThumbnail?: string
-			gifPlayback?: boolean
-	  } & WithDimensions)
-	| {
-			document: WAMediaUpload
-			mimetype: string
-			fileName?: string
-			jpegThumbnail?: string
-	  }
-	| {}
-)
-
 export type AnyRegularMessageContent = (
 	| ({
 			text: string
@@ -293,30 +265,8 @@ export type AnyRegularMessageContent = (
 			body?: string
 			footer?: string
 	  }
-	| {
-			interactiveMessage: WAInteractiveMessageContent
-	  }
 	| SharePhoneNumber
 	| RequestPhoneNumber
-	| ({
-			buttons?: proto.Message.ButtonsMessage.IButton[]
-			templateButtons?: proto.IHydratedTemplateButton[]
-			headerType?: proto.Message.ButtonsMessage.HeaderType
-			text?: string
-			caption?: string
-			footer?: string
-	  } & Mentionable &
-			Contextable &
-			Editable)
-	| ({
-			sections?: proto.Message.ListMessage.ISection[]
-			buttonText?: string
-			title?: string
-			text?: string
-			footer?: string
-	  } & Mentionable &
-			Contextable &
-			Editable)
 ) &
 	ViewOnce
 

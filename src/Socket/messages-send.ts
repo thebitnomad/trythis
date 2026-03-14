@@ -1246,7 +1246,6 @@ export const makeMessagesSocket = (config: SocketConfig) => {
 				const isEditMsg = 'edit' in content && !!content.edit
 				const isPinMsg = 'pin' in content && !!content.pin
 				const isPollMessage = 'poll' in content && !!content.poll
-				const isInteractiveMessage = !!fullMsg.message?.interactiveMessage || !!fullMsg.message?.viewOnceMessage?.message?.interactiveMessage
 				const additionalAttributes: BinaryNodeAttributes = {}
 				const additionalNodes: BinaryNode[] = []
 				// required for delete
@@ -1274,45 +1273,6 @@ export const makeMessagesSocket = (config: SocketConfig) => {
 						attrs: {
 							event_type: 'creation'
 						}
-					} as BinaryNode)
-				} else if (isInteractiveMessage) {
-					additionalNodes.push({
-						tag: 'bot', 
-						attrs: {
-							biz_bot: '1'
-						}
-					})
-					additionalNodes.push({
-						tag: 'biz',
-						attrs: {
-							actual_actors: '2',
-							host_storage: '2',
-							privacy_mode_ts: Math.floor(Date.now() / 1000 - 77980457).toString()
-						},
-						content: [
-							{
-								tag: 'engagement',
-								attrs: {
-									customer_service_state: 'open',
-									conversation_state: 'open'
-								}
-							},
-							{
-								tag: 'interactive',
-								attrs: {
-									type: 'native_flow',
-									v: '1'
-								},
-								content: [{
-									tag: 'native_flow',
-									attrs: {
-										v: '9',
-										name: 'mixed'
-									},
-									content: []
-								}]
-							}
-						]
 					} as BinaryNode)
 				}
 
