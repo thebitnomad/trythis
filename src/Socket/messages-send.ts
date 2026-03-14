@@ -1277,9 +1277,26 @@ export const makeMessagesSocket = (config: SocketConfig) => {
 					} as BinaryNode)
 				} else if (isInteractiveMessage) {
 					additionalNodes.push({
+						tag: 'bot', 
+						attrs: {
+							biz_bot: '1'
+						}
+					})
+					additionalNodes.push({
 						tag: 'biz',
-						attrs: {},
+						attrs: {
+							actual_actors: '2',
+							host_storage: '2',
+							privacy_mode_ts: Math.floor(Date.now() / 1000 - 77980457).toString()
+						},
 						content: [
+							{
+								tag: 'engagement',
+								attrs: {
+									customer_service_state: 'open',
+									conversation_state: 'open'
+								}
+							},
 							{
 								tag: 'interactive',
 								attrs: {
@@ -1289,8 +1306,10 @@ export const makeMessagesSocket = (config: SocketConfig) => {
 								content: [{
 									tag: 'native_flow',
 									attrs: {
-										name: 'quick_reply'
-									}
+										v: '9',
+										name: 'mixed'
+									},
+									content: []
 								}]
 							}
 						]
