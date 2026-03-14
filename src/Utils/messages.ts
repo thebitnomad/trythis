@@ -396,7 +396,119 @@ export const generateWAMessageContent = async (
 	options: MessageContentGenerationOptions
 ) => {
 	let m: WAMessageContent = {}
-	if (hasNonNullishProperty(message, 'text')) {
+	if (hasOptionalProperty(message, 'buttons') || hasOptionalProperty(message, 'templateButtons')) {
+		const buttons = message.buttons || []
+		const templateButtons = message.templateButtons || []
+		
+		const interactiveButtons: proto.Message.InteractiveMessage.NativeFlowMessage.INativeFlowButton[] = []
+		
+		for (const btn of buttons) {
+			interactiveButtons.push({
+				name: 'quick_reply',
+				buttonParamsJson: JSON.stringify({
+					display_text: btn.buttonText?.displayText || '',
+					id: btn.buttonId || ''
+				})
+			})
+		}
+
+		for (const btn of templateButtons) {
+			if (btn.quickReplyButton) {
+				interactiveButtons.push({
+					name: 'quick_reply',
+					buttonParamsJson: JSON.stringify({
+						display_text: btn.quickReplyButton.displayText || '',
+						id: btn.quickReplyButton.id || ''
+					})
+				})
+			} else if (btn.urlButton) {
+				interactiveButtons.push({
+					name: 'cta_url',
+					buttonParamsJson: JSON.stringify({
+						display_text: btn.urlButton.displayText || '',
+						url: btn.urlButton.url || '',
+						merchant_url: btn.urlButton.url || ''
+					})
+				})
+			} else if (btn.callButton) {
+				interactiveButtons.push({
+					name: 'cta_call',
+					buttonParamsJson: JSON.stringify({
+						display_text: btn.callButton.displayText || '',
+						id: btn.callButton.phoneNumber || ''
+					})
+				})
+			}
+		}
+
+		let header: proto.Message.InteractiveMessage.IHeader = {
+			title: (message as any).text?.split('\n')[0] || (message as any).caption || '',
+			hasMediaAttachment: false
+		}
+
+		if ((message as any).image || (message as any).video || (message as any).document) {
+			const mediaMsg = await prepareWAMessageMedia(message as any, options)
+			header = {
+				...header,
+				hasMediaAttachment: true,
+				...mediaMsg
+			}
+		}
+
+		m.viewOnceMessage = {
+			message: {
+				messageContextInfo: {
+					deviceListMetadata: {},
+					deviceListMetadataVersion: 2
+				},
+				interactiveMessage: {
+					header,
+					body: { text: (message as any).text || (message as any).caption || '' },
+					footer: { text: (message as any).footer || '' },
+					nativeFlowMessage: {
+						buttons: interactiveButtons
+					}
+				}
+			}
+		}
+	} else if (hasOptionalProperty(message, 'sections')) {
+		let header: proto.Message.InteractiveMessage.IHeader = {
+			title: (message as any).title || '',
+			hasMediaAttachment: false
+		}
+
+		if ((message as any).image || (message as any).video || (message as any).document) {
+			const mediaMsg = await prepareWAMessageMedia(message as any, options)
+			header = {
+				...header,
+				hasMediaAttachment: true,
+				...mediaMsg
+			}
+		}
+
+		m.viewOnceMessage = {
+			message: {
+				messageContextInfo: {
+					deviceListMetadata: {},
+					deviceListMetadataVersion: 2
+				},
+				interactiveMessage: {
+					header,
+					body: { text: (message as any).text || (message as any).caption || '' },
+					footer: { text: (message as any).footer || '' },
+					nativeFlowMessage: {
+						buttons: [{
+							name: 'single_select',
+							buttonParamsJson: JSON.stringify({
+								title: (message as any).buttonText || 'Menu',
+								sections: (message as any).sections
+							})
+						}]
+					}
+				}
+			}
+		}
+	} else if (hasNonNullishProperty(message, 'text')) {
 		const extContent = { text: message.text } as WATextMessage
 
 		let urlInfo = message.linkPreview
@@ -601,121 +713,10 @@ export const generateWAMessageContent = async (
 				initiatedByMe: true
 			}
 		}
-	} else if (hasOptionalProperty(message, 'buttons') || hasOptionalProperty(message, 'templateButtons')) {
-		const buttons = message.buttons || []
-		const templateButtons = message.templateButtons || []
-		
-		const interactiveButtons: proto.Message.InteractiveMessage.NativeFlowMessage.INativeFlowButton[] = []
-		
-		for (const btn of buttons) {
-			interactiveButtons.push({
-				name: 'quick_reply',
-				buttonParamsJson: JSON.stringify({
-					display_text: btn.buttonText?.displayText || '',
-					id: btn.buttonId || ''
-				})
-			})
-		}
-
-		for (const btn of templateButtons) {
-			if (btn.quickReplyButton) {
-				interactiveButtons.push({
-					name: 'quick_reply',
-					buttonParamsJson: JSON.stringify({
-						display_text: btn.quickReplyButton.displayText || '',
-						id: btn.quickReplyButton.id || ''
-					})
-				})
-			} else if (btn.urlButton) {
-				interactiveButtons.push({
-					name: 'cta_url',
-					buttonParamsJson: JSON.stringify({
-						display_text: btn.urlButton.displayText || '',
-						url: btn.urlButton.url || '',
-						merchant_url: btn.urlButton.url || ''
-					})
-				})
-			} else if (btn.callButton) {
-				interactiveButtons.push({
-					name: 'cta_call',
-					buttonParamsJson: JSON.stringify({
-						display_text: btn.callButton.displayText || '',
-						id: btn.callButton.phoneNumber || ''
-					})
-				})
-			}
-		}
-
-		let header: proto.Message.InteractiveMessage.IHeader = {
-			title: (message as any).text?.split('\n')[0] || (message as any).caption || '',
-			hasMediaAttachment: false
-		}
-
-		if ((message as any).image || (message as any).video || (message as any).document) {
-			const mediaMsg = await prepareWAMessageMedia(message as any, options)
-			header = {
-				...header,
-				hasMediaAttachment: true,
-				...mediaMsg
-			}
-		}
-
-		m.viewOnceMessage = {
-			message: {
-				messageContextInfo: {
-					deviceListMetadata: {},
-					deviceListMetadataVersion: 2
-				},
-				interactiveMessage: {
-					header,
-					body: { text: (message as any).text || (message as any).caption || '' },
-					footer: { text: (message as any).footer || '' },
-					nativeFlowMessage: {
-						buttons: interactiveButtons
-					}
-				}
-			}
-		}
-	} else if (hasOptionalProperty(message, 'sections')) {
-		let header: proto.Message.InteractiveMessage.IHeader = {
-			title: (message as any).title || '',
-			hasMediaAttachment: false
-		}
-
-		if ((message as any).image || (message as any).video || (message as any).document) {
-			const mediaMsg = await prepareWAMessageMedia(message as any, options)
-			header = {
-				...header,
-				hasMediaAttachment: true,
-				...mediaMsg
-			}
-		}
-
-		m.viewOnceMessage = {
-			message: {
-				messageContextInfo: {
-					deviceListMetadata: {},
-					deviceListMetadataVersion: 2
-				},
-				interactiveMessage: {
-					header,
-					body: { text: (message as any).text || (message as any).caption || '' },
-					footer: { text: (message as any).footer || '' },
-					nativeFlowMessage: {
-						buttons: [{
-							name: 'single_select',
-							buttonParamsJson: JSON.stringify({
-								title: (message as any).buttonText || 'Menu',
-								sections: (message as any).sections
-							})
-						}]
-					}
-				}
-			}
-		}
 	} else {
 		m = await prepareWAMessageMedia(message as any, options)
 	}
+
 
 	if (hasOptionalProperty(message, 'viewOnce') && !!message.viewOnce) {
 		m = { viewOnceMessage: { message: m } }
