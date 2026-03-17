@@ -17,15 +17,15 @@
         "type": "git",
         "url": "https://github.com/stvnnvs/baileys.git"
     },
-    "license": "MIT",
-    "author": "Adhiraj Singh",
-    "main": "lib/index.js",
-    "types": "lib/index.d.ts",
-    "files": [
-        "lib/*",
-        "WAProto/*.js",
-        "engine-requirements.js"
-    ],
+     "license": "MIT",
+  "author": "Rajeh Taher",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*",
+    "WAProto/**/*",
+    "engine-requirements.js"
+  ],
     "scripts": {
     "build:all": "npm run build && npm run build:docs",
     "build:docs": "typedoc",
