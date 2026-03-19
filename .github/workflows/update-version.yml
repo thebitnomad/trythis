@@ -33,6 +33,11 @@ jobs:
       - name: Install packages
         run: yarn install --no-immutable
 
+      - name: Fix WAProto imports
+        run: |
+          find src -name "*.ts" -exec sed -i "s|from '../../WAProto/index.js'|from '../../WAProto/index.mjs'|g" {} \;
+          find src -name "*.ts" -exec sed -i 's|from "../../WAProto/index.js"|from "../../WAProto/index.mjs"|g' {} \;
+
       - name: Update WhatsApp Web Version
         id: update_version
         run: yarn update:version
