@@ -47,6 +47,11 @@ jobs:
 
       - name: GenerateStatics
         run: yarn gen:protobuf
+        
+     - name: Fix WAProto ESM export
+  run: |
+    echo "" >> WAProto/index.js
+    echo "module.exports.proto = $root.proto;" >> WAProto/index.js   
 
       - name: Update baileys-version.json
         run: |
