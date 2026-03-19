@@ -1,0 +1,792 @@
+2026-03-19T04:23:42.2543904Z ##[debug]Starting: update-proto
+2026-03-19T04:23:42.2563482Z ##[debug]Cleaning runner temp folder: /home/runner/work/_temp
+2026-03-19T04:23:42.2689628Z ##[debug]Starting: Set up job
+2026-03-19T04:23:42.2691185Z Current runner version: '2.332.0'
+2026-03-19T04:23:42.2719588Z ##[group]Runner Image Provisioner
+2026-03-19T04:23:42.2720561Z Hosted Compute Agent
+2026-03-19T04:23:42.2721525Z Version: 20260213.493
+2026-03-19T04:23:42.2722332Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-03-19T04:23:42.2723606Z Build Date: 2026-02-13T00:28:41Z
+2026-03-19T04:23:42.2724589Z Worker ID: {eced5f34-18e7-431b-9460-aac16b37bb66}
+2026-03-19T04:23:42.2725510Z Azure Region: centralus
+2026-03-19T04:23:42.2726347Z ##[endgroup]
+2026-03-19T04:23:42.2728143Z ##[group]Operating System
+2026-03-19T04:23:42.2728977Z Ubuntu
+2026-03-19T04:23:42.2729747Z 24.04.3
+2026-03-19T04:23:42.2730389Z LTS
+2026-03-19T04:23:42.2731222Z ##[endgroup]
+2026-03-19T04:23:42.2731984Z ##[group]Runner Image
+2026-03-19T04:23:42.2732761Z Image: ubuntu-24.04
+2026-03-19T04:23:42.2733752Z Version: 20260309.50.1
+2026-03-19T04:23:42.2735365Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260309.50/images/ubuntu/Ubuntu2404-Readme.md
+2026-03-19T04:23:42.2737535Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260309.50
+2026-03-19T04:23:42.2739057Z ##[endgroup]
+2026-03-19T04:23:42.2740675Z ##[group]GITHUB_TOKEN Permissions
+2026-03-19T04:23:42.2743582Z Contents: write
+2026-03-19T04:23:42.2744349Z Metadata: read
+2026-03-19T04:23:42.2744987Z PullRequests: write
+2026-03-19T04:23:42.2745765Z ##[endgroup]
+2026-03-19T04:23:42.2748980Z Secret source: Actions
+2026-03-19T04:23:42.2750294Z ##[debug]Primary repository: thebitnomad/trythis
+2026-03-19T04:23:42.2751480Z Prepare workflow directory
+2026-03-19T04:23:42.2833952Z ##[debug]Creating pipeline directory: '/home/runner/work/trythis'
+2026-03-19T04:23:42.2836922Z ##[debug]Creating workspace directory: '/home/runner/work/trythis/trythis'
+2026-03-19T04:23:42.2838215Z ##[debug]Update context data
+2026-03-19T04:23:42.2841608Z ##[debug]Evaluating job-level environment variables
+2026-03-19T04:23:42.3060561Z ##[debug]Evaluating job container
+2026-03-19T04:23:42.3065461Z ##[debug]Evaluating job service containers
+2026-03-19T04:23:42.3069043Z ##[debug]Evaluating job defaults
+2026-03-19T04:23:42.3103845Z Prepare all required actions
+2026-03-19T04:23:42.3160730Z Getting action download info
+2026-03-19T04:23:42.6607849Z Download action repository 'actions/checkout@v3' (SHA:f43a0e5ff2bd294095638e18286ca9a3d1956744)
+2026-03-19T04:23:42.6800142Z ##[debug]Copied action archive '/opt/actionarchivecache/actions_checkout/f43a0e5ff2bd294095638e18286ca9a3d1956744.tar.gz' to '/home/runner/work/_actions/_temp_47fbf5f0-87c8-4995-9f79-62b8608e9922/db9eab68-2c8f-4cdf-9b86-9c239ef22e90.tar.gz'
+2026-03-19T04:23:42.7924412Z ##[debug]Unwrap 'actions-checkout-f43a0e5' to '/home/runner/work/_actions/actions/checkout/v3'
+2026-03-19T04:23:42.8002794Z ##[debug]Archive '/home/runner/work/_actions/_temp_47fbf5f0-87c8-4995-9f79-62b8608e9922/db9eab68-2c8f-4cdf-9b86-9c239ef22e90.tar.gz' has been unzipped into '/home/runner/work/_actions/actions/checkout/v3'.
+2026-03-19T04:23:42.8083833Z Download action repository 'actions/setup-node@v3' (SHA:3235b876344d2a9aa001b8d1453c930bba69e610)
+2026-03-19T04:23:42.8730386Z ##[debug]Copied action archive '/opt/actionarchivecache/actions_setup-node/3235b876344d2a9aa001b8d1453c930bba69e610.tar.gz' to '/home/runner/work/_actions/_temp_c0431434-4f7c-41bd-8893-c1d1ca940b15/8fd80f04-5e06-4938-9636-a80a70283dc2.tar.gz'
+2026-03-19T04:23:42.9261613Z ##[debug]Unwrap 'actions-setup-node-3235b87' to '/home/runner/work/_actions/actions/setup-node/v3'
+2026-03-19T04:23:42.9393725Z ##[debug]Archive '/home/runner/work/_actions/_temp_c0431434-4f7c-41bd-8893-c1d1ca940b15/8fd80f04-5e06-4938-9636-a80a70283dc2.tar.gz' has been unzipped into '/home/runner/work/_actions/actions/setup-node/v3'.
+2026-03-19T04:23:42.9426177Z Download action repository 'peter-evans/create-pull-request@v5' (SHA:4e1beaa7521e8b457b572c090b25bd3db56bf1c5)
+2026-03-19T04:23:43.3865996Z ##[debug]Download 'https://api.github.com/repos/peter-evans/create-pull-request/tarball/4e1beaa7521e8b457b572c090b25bd3db56bf1c5' to '/home/runner/work/_actions/_temp_1eef7ed1-72b0-41c2-8d73-c8a875410eb6/cab1baa9-6bcc-4628-b155-b471a728739a.tar.gz'
+2026-03-19T04:23:43.4027223Z ##[debug]Unwrap 'peter-evans-create-pull-request-4e1beaa' to '/home/runner/work/_actions/peter-evans/create-pull-request/v5'
+2026-03-19T04:23:43.4059643Z ##[debug]Archive '/home/runner/work/_actions/_temp_1eef7ed1-72b0-41c2-8d73-c8a875410eb6/cab1baa9-6bcc-4628-b155-b471a728739a.tar.gz' has been unzipped into '/home/runner/work/_actions/peter-evans/create-pull-request/v5'.
+2026-03-19T04:23:43.4084215Z ##[debug]action.yml for action: '/home/runner/work/_actions/actions/checkout/v3/action.yml'.
+2026-03-19T04:23:43.4791436Z ##[debug]action.yml for action: '/home/runner/work/_actions/actions/setup-node/v3/action.yml'.
+2026-03-19T04:23:43.4845442Z ##[debug]action.yml for action: '/home/runner/work/_actions/peter-evans/create-pull-request/v5/action.yml'.
+2026-03-19T04:23:43.4987655Z ##[debug]Set step '__actions_checkout' display name to: 'Run actions/checkout@v3'
+2026-03-19T04:23:43.4992657Z ##[debug]Set step '__actions_setup-node' display name to: 'Install Node'
+2026-03-19T04:23:43.4994815Z ##[debug]Set step '__run' display name to: 'Enable Corepack and Set Yarn Version'
+2026-03-19T04:23:43.4996775Z ##[debug]Set step '__run_2' display name to: 'Install packages'
+2026-03-19T04:23:43.4998622Z ##[debug]Set step 'wa_proto_info' display name to: 'Update WAProto.proto'
+2026-03-19T04:23:43.5000454Z ##[debug]Set step '__run_3' display name to: 'GenerateStatics'
+2026-03-19T04:23:43.5002614Z ##[debug]Set step '__run_4' display name to: 'Update baileys-version.json'
+2026-03-19T04:23:43.5004579Z ##[debug]Set step '__peter-evans_create-pull-request' display name to: 'Create Pull Request'
+2026-03-19T04:23:43.5005467Z Complete job name: update-proto
+2026-03-19T04:23:43.5040730Z ##[debug]Collect running processes for tracking orphan processes.
+2026-03-19T04:23:43.5177274Z ##[debug]Finishing: Set up job
+2026-03-19T04:23:43.5288697Z ##[debug]Evaluating condition for step: 'Run actions/checkout@v3'
+2026-03-19T04:23:43.5323352Z ##[debug]Evaluating: success()
+2026-03-19T04:23:43.5328314Z ##[debug]Evaluating success:
+2026-03-19T04:23:43.5342751Z ##[debug]=> true
+2026-03-19T04:23:43.5348602Z ##[debug]Result: true
+2026-03-19T04:23:43.5369749Z ##[debug]Starting: Run actions/checkout@v3
+2026-03-19T04:23:43.5434084Z ##[debug]Register post job cleanup for action: actions/checkout@v3
+2026-03-19T04:23:43.5505070Z ##[debug]Loading inputs
+2026-03-19T04:23:43.5516162Z ##[debug]Evaluating: github.repository
+2026-03-19T04:23:43.5517219Z ##[debug]Evaluating Index:
+2026-03-19T04:23:43.5518981Z ##[debug]..Evaluating github:
+2026-03-19T04:23:43.5520119Z ##[debug]..=> Object
+2026-03-19T04:23:43.5525644Z ##[debug]..Evaluating String:
+2026-03-19T04:23:43.5526541Z ##[debug]..=> 'repository'
+2026-03-19T04:23:43.5530717Z ##[debug]=> 'thebitnomad/trythis'
+2026-03-19T04:23:43.5532476Z ##[debug]Result: 'thebitnomad/trythis'
+2026-03-19T04:23:43.5536361Z ##[debug]Evaluating: github.token
+2026-03-19T04:23:43.5536951Z ##[debug]Evaluating Index:
+2026-03-19T04:23:43.5537475Z ##[debug]..Evaluating github:
+2026-03-19T04:23:43.5537967Z ##[debug]..=> Object
+2026-03-19T04:23:43.5538471Z ##[debug]..Evaluating String:
+2026-03-19T04:23:43.5538929Z ##[debug]..=> 'token'
+2026-03-19T04:23:43.5539697Z ##[debug]=> '***'
+2026-03-19T04:23:43.5540308Z ##[debug]Result: '***'
+2026-03-19T04:23:43.5555610Z ##[debug]Loading env
+2026-03-19T04:23:43.5617388Z ##[group]Run actions/checkout@v3
+2026-03-19T04:23:43.5618085Z with:
+2026-03-19T04:23:43.5618533Z   repository: thebitnomad/trythis
+2026-03-19T04:23:43.5619335Z   token: ***
+2026-03-19T04:23:43.5619792Z   ssh-strict: true
+2026-03-19T04:23:43.5717118Z   persist-credentials: true
+2026-03-19T04:23:43.5717839Z   clean: true
+2026-03-19T04:23:43.5718458Z   sparse-checkout-cone-mode: true
+2026-03-19T04:23:43.5719022Z   fetch-depth: 1
+2026-03-19T04:23:43.5719581Z   fetch-tags: false
+2026-03-19T04:23:43.5719920Z   lfs: false
+2026-03-19T04:23:43.5720263Z   submodules: false
+2026-03-19T04:23:43.5720625Z   set-safe-directory: true
+2026-03-19T04:23:43.5722068Z ##[endgroup]
+2026-03-19T04:23:43.6414906Z ##[debug]GITHUB_WORKSPACE = '/home/runner/work/trythis/trythis'
+2026-03-19T04:23:43.6416271Z ##[debug]qualified repository = 'thebitnomad/trythis'
+2026-03-19T04:23:43.6417020Z ##[debug]ref = 'refs/heads/main'
+2026-03-19T04:23:43.6417754Z ##[debug]commit = 'd42ebb703e491c7a985b39defde83aea5cfee972'
+2026-03-19T04:23:43.6418507Z ##[debug]clean = true
+2026-03-19T04:23:43.6419100Z ##[debug]fetch depth = 1
+2026-03-19T04:23:43.6420009Z ##[debug]fetch tags = false
+2026-03-19T04:23:43.6420705Z ##[debug]lfs = false
+2026-03-19T04:23:43.6421524Z ##[debug]submodules = false
+2026-03-19T04:23:43.6422156Z ##[debug]recursive submodules = false
+2026-03-19T04:23:43.6422833Z ##[debug]GitHub Host URL = 
+2026-03-19T04:23:43.6423973Z ::add-matcher::/home/runner/work/_actions/actions/checkout/v3/dist/problem-matcher.json
+2026-03-19T04:23:43.6494137Z ##[debug]Added matchers: 'checkout-git'. Problem matchers scan action output for known warning or error strings and report these inline.
+2026-03-19T04:23:43.6498304Z Syncing repository: thebitnomad/trythis
+2026-03-19T04:23:43.6499548Z ::group::Getting Git version info
+2026-03-19T04:23:43.6500640Z ##[group]Getting Git version info
+2026-03-19T04:23:43.6501527Z Working directory is '/home/runner/work/trythis/trythis'
+2026-03-19T04:23:43.6502345Z ##[debug]Getting git version
+2026-03-19T04:23:43.6502768Z [command]/usr/bin/git version
+2026-03-19T04:23:43.6571518Z git version 2.53.0
+2026-03-19T04:23:43.6593334Z ##[debug]0
+2026-03-19T04:23:43.6594008Z ##[debug]git version 2.53.0
+2026-03-19T04:23:43.6594408Z ##[debug]
+2026-03-19T04:23:43.6595771Z ##[debug]Set git useragent to: git/2.53.0 (github-actions-checkout)
+2026-03-19T04:23:43.6596655Z ::endgroup::
+2026-03-19T04:23:43.6597041Z ##[endgroup]
+2026-03-19T04:23:43.6601402Z ::add-mask::***
+2026-03-19T04:23:43.6610515Z Temporarily overriding HOME='/home/runner/work/_temp/0074a08c-235f-4d66-bb59-b0871051d15a' before making global git config changes
+2026-03-19T04:23:43.6612055Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-19T04:23:43.6614227Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/trythis/trythis
+2026-03-19T04:23:43.6642886Z ##[debug]0
+2026-03-19T04:23:43.6643861Z ##[debug]
+2026-03-19T04:23:43.6647650Z Deleting the contents of '/home/runner/work/trythis/trythis'
+2026-03-19T04:23:43.6651084Z ::group::Initializing the repository
+2026-03-19T04:23:43.6651660Z ##[group]Initializing the repository
+2026-03-19T04:23:43.6653735Z [command]/usr/bin/git init /home/runner/work/trythis/trythis
+2026-03-19T04:23:43.6745831Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-03-19T04:23:43.6746769Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-03-19T04:23:43.6747572Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-03-19T04:23:43.6748191Z hint: call:
+2026-03-19T04:23:43.6748619Z hint:
+2026-03-19T04:23:43.6749342Z hint: 	git config --global init.defaultBranch <name>
+2026-03-19T04:23:43.6750197Z hint:
+2026-03-19T04:23:43.6751088Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-03-19T04:23:43.6751855Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-03-19T04:23:43.6752452Z hint:
+2026-03-19T04:23:43.6752768Z hint: 	git branch -m <name>
+2026-03-19T04:23:43.6753305Z hint:
+2026-03-19T04:23:43.6754133Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-03-19T04:23:43.6754921Z Initialized empty Git repository in /home/runner/work/trythis/trythis/.git/
+2026-03-19T04:23:43.6755801Z ##[debug]0
+2026-03-19T04:23:43.6756897Z ##[debug]Initialized empty Git repository in /home/runner/work/trythis/trythis/.git/
+2026-03-19T04:23:43.6757807Z ##[debug]
+2026-03-19T04:23:43.6758363Z [command]/usr/bin/git remote add origin https://github.com/thebitnomad/trythis
+2026-03-19T04:23:43.6783918Z ##[debug]0
+2026-03-19T04:23:43.6784531Z ##[debug]
+2026-03-19T04:23:43.6785173Z ::endgroup::
+2026-03-19T04:23:43.6785495Z ##[endgroup]
+2026-03-19T04:23:43.6786097Z ::group::Disabling automatic garbage collection
+2026-03-19T04:23:43.6786945Z ##[group]Disabling automatic garbage collection
+2026-03-19T04:23:43.6787688Z [command]/usr/bin/git config --local gc.auto 0
+2026-03-19T04:23:43.6806999Z ##[debug]0
+2026-03-19T04:23:43.6807659Z ##[debug]
+2026-03-19T04:23:43.6808236Z ::endgroup::
+2026-03-19T04:23:43.6808567Z ##[endgroup]
+2026-03-19T04:23:43.6809130Z ::group::Setting up auth
+2026-03-19T04:23:43.6809525Z ##[group]Setting up auth
+2026-03-19T04:23:43.6812242Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-19T04:23:43.6829160Z ##[debug]1
+2026-03-19T04:23:43.6829739Z ##[debug]
+2026-03-19T04:23:43.6832665Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-19T04:23:43.7094778Z ##[debug]0
+2026-03-19T04:23:43.7095377Z ##[debug]
+2026-03-19T04:23:43.7097853Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-19T04:23:43.7115442Z ##[debug]1
+2026-03-19T04:23:43.7116043Z ##[debug]
+2026-03-19T04:23:43.7120409Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-19T04:23:43.7278759Z ##[debug]0
+2026-03-19T04:23:43.7279753Z ##[debug]
+2026-03-19T04:23:43.7286179Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-03-19T04:23:43.7304199Z ##[debug]0
+2026-03-19T04:23:43.7305139Z ##[debug]
+2026-03-19T04:23:43.7311135Z ::endgroup::
+2026-03-19T04:23:43.7311743Z ##[endgroup]
+2026-03-19T04:23:43.7313058Z ::group::Fetching the repository
+2026-03-19T04:23:43.7313835Z ##[group]Fetching the repository
+2026-03-19T04:23:43.7320150Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +d42ebb703e491c7a985b39defde83aea5cfee972:refs/remotes/origin/main
+2026-03-19T04:23:43.9465754Z remote: Enumerating objects: 612, done.        
+2026-03-19T04:23:43.9466633Z remote: Counting objects:   0% (1/612)        
+2026-03-19T04:23:43.9467242Z remote: Counting objects:   1% (7/612)        
+2026-03-19T04:23:43.9467847Z remote: Counting objects:   2% (13/612)        
+2026-03-19T04:23:43.9468457Z remote: Counting objects:   3% (19/612)        
+2026-03-19T04:23:43.9469059Z remote: Counting objects:   4% (25/612)        
+2026-03-19T04:23:43.9469672Z remote: Counting objects:   5% (31/612)        
+2026-03-19T04:23:43.9470316Z remote: Counting objects:   6% (37/612)        
+2026-03-19T04:23:43.9471155Z remote: Counting objects:   7% (43/612)        
+2026-03-19T04:23:43.9471794Z remote: Counting objects:   8% (49/612)        
+2026-03-19T04:23:43.9472400Z remote: Counting objects:   9% (56/612)        
+2026-03-19T04:23:43.9473011Z remote: Counting objects:  10% (62/612)        
+2026-03-19T04:23:43.9473627Z remote: Counting objects:  11% (68/612)        
+2026-03-19T04:23:43.9474236Z remote: Counting objects:  12% (74/612)        
+2026-03-19T04:23:43.9474863Z remote: Counting objects:  13% (80/612)        
+2026-03-19T04:23:43.9475492Z remote: Counting objects:  14% (86/612)        
+2026-03-19T04:23:43.9476096Z remote: Counting objects:  15% (92/612)        
+2026-03-19T04:23:43.9476716Z remote: Counting objects:  16% (98/612)        
+2026-03-19T04:23:43.9477327Z remote: Counting objects:  17% (105/612)        
+2026-03-19T04:23:43.9477948Z remote: Counting objects:  18% (111/612)        
+2026-03-19T04:23:43.9478565Z remote: Counting objects:  19% (117/612)        
+2026-03-19T04:23:43.9479177Z remote: Counting objects:  20% (123/612)        
+2026-03-19T04:23:43.9480061Z remote: Counting objects:  21% (129/612)        
+2026-03-19T04:23:43.9480663Z remote: Counting objects:  22% (135/612)        
+2026-03-19T04:23:43.9481393Z remote: Counting objects:  23% (141/612)        
+2026-03-19T04:23:43.9482006Z remote: Counting objects:  24% (147/612)        
+2026-03-19T04:23:43.9482629Z remote: Counting objects:  25% (153/612)        
+2026-03-19T04:23:43.9483235Z remote: Counting objects:  26% (160/612)        
+2026-03-19T04:23:43.9483851Z remote: Counting objects:  27% (166/612)        
+2026-03-19T04:23:43.9484545Z remote: Counting objects:  28% (172/612)        
+2026-03-19T04:23:43.9485211Z remote: Counting objects:  29% (178/612)        
+2026-03-19T04:23:43.9485810Z remote: Counting objects:  30% (184/612)        
+2026-03-19T04:23:43.9486417Z remote: Counting objects:  31% (190/612)        
+2026-03-19T04:23:43.9487021Z remote: Counting objects:  32% (196/612)        
+2026-03-19T04:23:43.9487616Z remote: Counting objects:  33% (202/612)        
+2026-03-19T04:23:43.9488235Z remote: Counting objects:  34% (209/612)        
+2026-03-19T04:23:43.9488830Z remote: Counting objects:  35% (215/612)        
+2026-03-19T04:23:43.9489438Z remote: Counting objects:  36% (221/612)        
+2026-03-19T04:23:43.9490044Z remote: Counting objects:  37% (227/612)        
+2026-03-19T04:23:43.9490642Z remote: Counting objects:  38% (233/612)        
+2026-03-19T04:23:43.9491310Z remote: Counting objects:  39% (239/612)        
+2026-03-19T04:23:43.9491906Z remote: Counting objects:  40% (245/612)        
+2026-03-19T04:23:43.9492509Z remote: Counting objects:  41% (251/612)        
+2026-03-19T04:23:43.9493105Z remote: Counting objects:  42% (258/612)        
+2026-03-19T04:23:43.9493701Z remote: Counting objects:  43% (264/612)        
+2026-03-19T04:23:43.9494297Z remote: Counting objects:  44% (270/612)        
+2026-03-19T04:23:43.9494900Z remote: Counting objects:  45% (276/612)        
+2026-03-19T04:23:43.9495503Z remote: Counting objects:  46% (282/612)        
+2026-03-19T04:23:43.9496102Z remote: Counting objects:  47% (288/612)        
+2026-03-19T04:23:43.9496818Z remote: Counting objects:  48% (294/612)        
+2026-03-19T04:23:43.9497427Z remote: Counting objects:  49% (300/612)        
+2026-03-19T04:23:43.9498026Z remote: Counting objects:  50% (306/612)        
+2026-03-19T04:23:43.9498625Z remote: Counting objects:  51% (313/612)        
+2026-03-19T04:23:43.9499232Z remote: Counting objects:  52% (319/612)        
+2026-03-19T04:23:43.9499843Z remote: Counting objects:  53% (325/612)        
+2026-03-19T04:23:43.9500438Z remote: Counting objects:  54% (331/612)        
+2026-03-19T04:23:43.9501168Z remote: Counting objects:  55% (337/612)        
+2026-03-19T04:23:43.9501772Z remote: Counting objects:  56% (343/612)        
+2026-03-19T04:23:43.9502376Z remote: Counting objects:  57% (349/612)        
+2026-03-19T04:23:43.9502977Z remote: Counting objects:  58% (355/612)        
+2026-03-19T04:23:43.9503583Z remote: Counting objects:  59% (362/612)        
+2026-03-19T04:23:43.9504187Z remote: Counting objects:  60% (368/612)        
+2026-03-19T04:23:43.9504803Z remote: Counting objects:  61% (374/612)        
+2026-03-19T04:23:43.9505406Z remote: Counting objects:  62% (380/612)        
+2026-03-19T04:23:43.9506006Z remote: Counting objects:  63% (386/612)        
+2026-03-19T04:23:43.9506616Z remote: Counting objects:  64% (392/612)        
+2026-03-19T04:23:43.9507216Z remote: Counting objects:  65% (398/612)        
+2026-03-19T04:23:43.9507819Z remote: Counting objects:  66% (404/612)        
+2026-03-19T04:23:43.9508417Z remote: Counting objects:  67% (411/612)        
+2026-03-19T04:23:43.9537680Z remote: Counting objects:  68% (417/612)        
+2026-03-19T04:23:43.9538682Z remote: Counting objects:  69% (423/612)        
+2026-03-19T04:23:43.9539601Z remote: Counting objects:  70% (429/612)        
+2026-03-19T04:23:43.9540227Z remote: Counting objects:  71% (435/612)        
+2026-03-19T04:23:43.9540934Z remote: Counting objects:  72% (441/612)        
+2026-03-19T04:23:43.9541752Z remote: Counting objects:  73% (447/612)        
+2026-03-19T04:23:43.9542363Z remote: Counting objects:  74% (453/612)        
+2026-03-19T04:23:43.9542969Z remote: Counting objects:  75% (459/612)        
+2026-03-19T04:23:43.9543572Z remote: Counting objects:  76% (466/612)        
+2026-03-19T04:23:43.9544164Z remote: Counting objects:  77% (472/612)        
+2026-03-19T04:23:43.9544760Z remote: Counting objects:  78% (478/612)        
+2026-03-19T04:23:43.9545354Z remote: Counting objects:  79% (484/612)        
+2026-03-19T04:23:43.9545951Z remote: Counting objects:  80% (490/612)        
+2026-03-19T04:23:43.9546542Z remote: Counting objects:  81% (496/612)        
+2026-03-19T04:23:43.9547140Z remote: Counting objects:  82% (502/612)        
+2026-03-19T04:23:43.9547739Z remote: Counting objects:  83% (508/612)        
+2026-03-19T04:23:43.9548335Z remote: Counting objects:  84% (515/612)        
+2026-03-19T04:23:43.9548930Z remote: Counting objects:  85% (521/612)        
+2026-03-19T04:23:43.9549526Z remote: Counting objects:  86% (527/612)        
+2026-03-19T04:23:43.9550162Z remote: Counting objects:  87% (533/612)        
+2026-03-19T04:23:43.9550754Z remote: Counting objects:  88% (539/612)        
+2026-03-19T04:23:43.9551486Z remote: Counting objects:  89% (545/612)        
+2026-03-19T04:23:43.9552079Z remote: Counting objects:  90% (551/612)        
+2026-03-19T04:23:43.9552680Z remote: Counting objects:  91% (557/612)        
+2026-03-19T04:23:43.9553281Z remote: Counting objects:  92% (564/612)        
+2026-03-19T04:23:43.9553879Z remote: Counting objects:  93% (570/612)        
+2026-03-19T04:23:43.9554484Z remote: Counting objects:  94% (576/612)        
+2026-03-19T04:23:43.9555081Z remote: Counting objects:  95% (582/612)        
+2026-03-19T04:23:43.9555698Z remote: Counting objects:  96% (588/612)        
+2026-03-19T04:23:43.9556297Z remote: Counting objects:  97% (594/612)        
+2026-03-19T04:23:43.9556904Z remote: Counting objects:  98% (600/612)        
+2026-03-19T04:23:43.9557530Z remote: Counting objects:  99% (606/612)        
+2026-03-19T04:23:43.9558204Z remote: Counting objects: 100% (612/612)        
+2026-03-19T04:23:43.9558862Z remote: Counting objects: 100% (612/612), done.        
+2026-03-19T04:23:43.9559511Z remote: Compressing objects:   0% (1/565)        
+2026-03-19T04:23:43.9560142Z remote: Compressing objects:   1% (6/565)        
+2026-03-19T04:23:43.9560758Z remote: Compressing objects:   2% (12/565)        
+2026-03-19T04:23:43.9561455Z remote: Compressing objects:   3% (17/565)        
+2026-03-19T04:23:43.9562074Z remote: Compressing objects:   4% (23/565)        
+2026-03-19T04:23:43.9562703Z remote: Compressing objects:   5% (29/565)        
+2026-03-19T04:23:43.9563334Z remote: Compressing objects:   6% (34/565)        
+2026-03-19T04:23:43.9563959Z remote: Compressing objects:   7% (40/565)        
+2026-03-19T04:23:43.9564586Z remote: Compressing objects:   8% (46/565)        
+2026-03-19T04:23:43.9565483Z remote: Compressing objects:   9% (51/565)        
+2026-03-19T04:23:43.9566540Z remote: Compressing objects:  10% (57/565)        
+2026-03-19T04:23:43.9567337Z remote: Compressing objects:  11% (63/565)        
+2026-03-19T04:23:43.9567958Z remote: Compressing objects:  12% (68/565)        
+2026-03-19T04:23:43.9568592Z remote: Compressing objects:  13% (74/565)        
+2026-03-19T04:23:43.9569495Z remote: Compressing objects:  14% (80/565)        
+2026-03-19T04:23:43.9570636Z remote: Compressing objects:  15% (85/565)        
+2026-03-19T04:23:43.9571582Z remote: Compressing objects:  16% (91/565)        
+2026-03-19T04:23:43.9572225Z remote: Compressing objects:  17% (97/565)        
+2026-03-19T04:23:43.9572885Z remote: Compressing objects:  18% (102/565)        
+2026-03-19T04:23:43.9573785Z remote: Compressing objects:  19% (108/565)        
+2026-03-19T04:23:43.9574903Z remote: Compressing objects:  20% (113/565)        
+2026-03-19T04:23:43.9575589Z remote: Compressing objects:  21% (119/565)        
+2026-03-19T04:23:43.9576696Z remote: Compressing objects:  22% (125/565)        
+2026-03-19T04:23:43.9693791Z remote: Compressing objects:  23% (130/565)        
+2026-03-19T04:23:43.9694566Z remote: Compressing objects:  24% (136/565)        
+2026-03-19T04:23:43.9695207Z remote: Compressing objects:  25% (142/565)        
+2026-03-19T04:23:43.9695854Z remote: Compressing objects:  26% (147/565)        
+2026-03-19T04:23:43.9696474Z remote: Compressing objects:  27% (153/565)        
+2026-03-19T04:23:43.9697097Z remote: Compressing objects:  28% (159/565)        
+2026-03-19T04:23:43.9697720Z remote: Compressing objects:  29% (164/565)        
+2026-03-19T04:23:43.9698346Z remote: Compressing objects:  30% (170/565)        
+2026-03-19T04:23:43.9698970Z remote: Compressing objects:  31% (176/565)        
+2026-03-19T04:23:43.9699602Z remote: Compressing objects:  32% (181/565)        
+2026-03-19T04:23:43.9700227Z remote: Compressing objects:  33% (187/565)        
+2026-03-19T04:23:43.9700984Z remote: Compressing objects:  34% (193/565)        
+2026-03-19T04:23:43.9701620Z remote: Compressing objects:  35% (198/565)        
+2026-03-19T04:23:43.9702264Z remote: Compressing objects:  36% (204/565)        
+2026-03-19T04:23:43.9702890Z remote: Compressing objects:  37% (210/565)        
+2026-03-19T04:23:43.9703515Z remote: Compressing objects:  38% (215/565)        
+2026-03-19T04:23:43.9704144Z remote: Compressing objects:  39% (221/565)        
+2026-03-19T04:23:43.9704777Z remote: Compressing objects:  40% (226/565)        
+2026-03-19T04:23:43.9705402Z remote: Compressing objects:  41% (232/565)        
+2026-03-19T04:23:43.9706028Z remote: Compressing objects:  42% (238/565)        
+2026-03-19T04:23:43.9706648Z remote: Compressing objects:  43% (243/565)        
+2026-03-19T04:23:43.9707301Z remote: Compressing objects:  44% (249/565)        
+2026-03-19T04:23:44.0733786Z remote: Compressing objects:  45% (255/565)        
+2026-03-19T04:23:44.0765480Z remote: Compressing objects:  46% (260/565)        
+2026-03-19T04:23:44.0776092Z remote: Compressing objects:  47% (266/565)        
+2026-03-19T04:23:44.0790493Z remote: Compressing objects:  48% (272/565)        
+2026-03-19T04:23:44.0813350Z remote: Compressing objects:  49% (277/565)        
+2026-03-19T04:23:44.0829269Z remote: Compressing objects:  50% (283/565)        
+2026-03-19T04:23:44.0838175Z remote: Compressing objects:  51% (289/565)        
+2026-03-19T04:23:44.0846769Z remote: Compressing objects:  52% (294/565)        
+2026-03-19T04:23:44.0856113Z remote: Compressing objects:  53% (300/565)        
+2026-03-19T04:23:44.0903856Z remote: Compressing objects:  54% (306/565)        
+2026-03-19T04:23:44.0906659Z remote: Compressing objects:  55% (311/565)        
+2026-03-19T04:23:44.0907643Z remote: Compressing objects:  56% (317/565)        
+2026-03-19T04:23:44.0908709Z remote: Compressing objects:  57% (323/565)        
+2026-03-19T04:23:44.0909723Z remote: Compressing objects:  58% (328/565)        
+2026-03-19T04:23:44.0910551Z remote: Compressing objects:  59% (334/565)        
+2026-03-19T04:23:44.0911485Z remote: Compressing objects:  60% (339/565)        
+2026-03-19T04:23:44.0912370Z remote: Compressing objects:  61% (345/565)        
+2026-03-19T04:23:44.0913002Z remote: Compressing objects:  62% (351/565)        
+2026-03-19T04:23:44.0913631Z remote: Compressing objects:  63% (356/565)        
+2026-03-19T04:23:44.0914246Z remote: Compressing objects:  64% (362/565)        
+2026-03-19T04:23:44.0914868Z remote: Compressing objects:  65% (368/565)        
+2026-03-19T04:23:44.0915492Z remote: Compressing objects:  66% (373/565)        
+2026-03-19T04:23:44.0916113Z remote: Compressing objects:  67% (379/565)        
+2026-03-19T04:23:44.0916738Z remote: Compressing objects:  68% (385/565)        
+2026-03-19T04:23:44.0917358Z remote: Compressing objects:  69% (390/565)        
+2026-03-19T04:23:44.0918017Z remote: Compressing objects:  70% (396/565)        
+2026-03-19T04:23:44.0918641Z remote: Compressing objects:  71% (402/565)        
+2026-03-19T04:23:44.0919267Z remote: Compressing objects:  72% (407/565)        
+2026-03-19T04:23:44.0919893Z remote: Compressing objects:  73% (413/565)        
+2026-03-19T04:23:44.0921264Z remote: Compressing objects:  74% (419/565)        
+2026-03-19T04:23:44.0921918Z remote: Compressing objects:  75% (424/565)        
+2026-03-19T04:23:44.0922540Z remote: Compressing objects:  76% (430/565)        
+2026-03-19T04:23:44.0923170Z remote: Compressing objects:  77% (436/565)        
+2026-03-19T04:23:44.0923798Z remote: Compressing objects:  78% (441/565)        
+2026-03-19T04:23:44.0924437Z remote: Compressing objects:  79% (447/565)        
+2026-03-19T04:23:44.0925190Z remote: Compressing objects:  80% (452/565)        
+2026-03-19T04:23:44.0926577Z remote: Compressing objects:  81% (458/565)        
+2026-03-19T04:23:44.0928195Z remote: Compressing objects:  82% (464/565)        
+2026-03-19T04:23:44.0928938Z remote: Compressing objects:  83% (469/565)        
+2026-03-19T04:23:44.0934542Z remote: Compressing objects:  84% (475/565)        
+2026-03-19T04:23:44.0935234Z remote: Compressing objects:  85% (481/565)        
+2026-03-19T04:23:44.0935890Z remote: Compressing objects:  86% (486/565)        
+2026-03-19T04:23:44.0939242Z remote: Compressing objects:  87% (492/565)        
+2026-03-19T04:23:44.0942382Z remote: Compressing objects:  88% (498/565)        
+2026-03-19T04:23:44.0944496Z remote: Compressing objects:  89% (503/565)        
+2026-03-19T04:23:44.0945568Z remote: Compressing objects:  90% (509/565)        
+2026-03-19T04:23:44.0946217Z remote: Compressing objects:  91% (515/565)        
+2026-03-19T04:23:44.0952586Z remote: Compressing objects:  92% (520/565)        
+2026-03-19T04:23:44.0953957Z remote: Compressing objects:  93% (526/565)        
+2026-03-19T04:23:44.0954953Z remote: Compressing objects:  94% (532/565)        
+2026-03-19T04:23:44.0955882Z remote: Compressing objects:  95% (537/565)        
+2026-03-19T04:23:44.0957201Z remote: Compressing objects:  96% (543/565)        
+2026-03-19T04:23:44.0958349Z remote: Compressing objects:  97% (549/565)        
+2026-03-19T04:23:44.0959198Z remote: Compressing objects:  98% (554/565)        
+2026-03-19T04:23:44.0960043Z remote: Compressing objects:  99% (560/565)        
+2026-03-19T04:23:44.0960791Z remote: Compressing objects: 100% (565/565)        
+2026-03-19T04:23:44.0961794Z remote: Compressing objects: 100% (565/565), done.        
+2026-03-19T04:23:44.1015738Z Receiving objects:   0% (1/612)
+2026-03-19T04:23:44.1016984Z Receiving objects:   1% (7/612)
+2026-03-19T04:23:44.1073580Z Receiving objects:   2% (13/612)
+2026-03-19T04:23:44.1074527Z Receiving objects:   3% (19/612)
+2026-03-19T04:23:44.1075822Z Receiving objects:   4% (25/612)
+2026-03-19T04:23:44.1976528Z Receiving objects:   5% (31/612)
+2026-03-19T04:23:44.2121212Z Receiving objects:   6% (37/612)
+2026-03-19T04:23:44.2697802Z Receiving objects:   7% (43/612)
+2026-03-19T04:23:44.2699176Z Receiving objects:   8% (49/612)
+2026-03-19T04:23:44.2700510Z Receiving objects:   9% (56/612)
+2026-03-19T04:23:44.2701866Z Receiving objects:  10% (62/612)
+2026-03-19T04:23:44.2703166Z Receiving objects:  11% (68/612)
+2026-03-19T04:23:44.2704499Z Receiving objects:  12% (74/612)
+2026-03-19T04:23:44.2705858Z Receiving objects:  13% (80/612)
+2026-03-19T04:23:44.2707151Z Receiving objects:  14% (86/612)
+2026-03-19T04:23:44.2709254Z Receiving objects:  15% (92/612)
+2026-03-19T04:23:44.2710750Z Receiving objects:  16% (98/612)
+2026-03-19T04:23:44.2712101Z Receiving objects:  17% (105/612)
+2026-03-19T04:23:44.2716001Z Receiving objects:  18% (111/612)
+2026-03-19T04:23:44.2717582Z Receiving objects:  19% (117/612)
+2026-03-19T04:23:44.2718974Z Receiving objects:  20% (123/612)
+2026-03-19T04:23:44.2720442Z Receiving objects:  21% (129/612)
+2026-03-19T04:23:44.2721565Z Receiving objects:  22% (135/612)
+2026-03-19T04:23:44.2723227Z Receiving objects:  23% (141/612)
+2026-03-19T04:23:44.2730701Z Receiving objects:  24% (147/612)
+2026-03-19T04:23:44.2737639Z Receiving objects:  25% (153/612)
+2026-03-19T04:23:44.2743182Z Receiving objects:  26% (160/612)
+2026-03-19T04:23:44.2753544Z Receiving objects:  27% (166/612)
+2026-03-19T04:23:44.2755565Z Receiving objects:  28% (172/612)
+2026-03-19T04:23:44.2763043Z Receiving objects:  29% (178/612)
+2026-03-19T04:23:44.2764945Z Receiving objects:  30% (184/612)
+2026-03-19T04:23:44.2767539Z Receiving objects:  31% (190/612)
+2026-03-19T04:23:44.2770199Z Receiving objects:  32% (196/612)
+2026-03-19T04:23:44.2772896Z Receiving objects:  33% (202/612)
+2026-03-19T04:23:44.2774435Z Receiving objects:  34% (209/612)
+2026-03-19T04:23:44.2775836Z Receiving objects:  35% (215/612)
+2026-03-19T04:23:44.2777466Z Receiving objects:  36% (221/612)
+2026-03-19T04:23:44.2779315Z Receiving objects:  37% (227/612)
+2026-03-19T04:23:44.2781283Z Receiving objects:  38% (233/612)
+2026-03-19T04:23:44.2783171Z Receiving objects:  39% (239/612)
+2026-03-19T04:23:44.2784920Z Receiving objects:  40% (245/612)
+2026-03-19T04:23:44.2786299Z Receiving objects:  41% (251/612)
+2026-03-19T04:23:44.2788837Z Receiving objects:  42% (258/612)
+2026-03-19T04:23:44.2791457Z Receiving objects:  43% (264/612)
+2026-03-19T04:23:44.2795110Z Receiving objects:  44% (270/612)
+2026-03-19T04:23:44.2804099Z Receiving objects:  45% (276/612)
+2026-03-19T04:23:44.2807007Z Receiving objects:  46% (282/612)
+2026-03-19T04:23:44.2816411Z Receiving objects:  47% (288/612)
+2026-03-19T04:23:44.2818761Z Receiving objects:  48% (294/612)
+2026-03-19T04:23:44.2820697Z Receiving objects:  49% (300/612)
+2026-03-19T04:23:44.2822921Z Receiving objects:  50% (306/612)
+2026-03-19T04:23:44.2824305Z Receiving objects:  51% (313/612)
+2026-03-19T04:23:44.2826837Z Receiving objects:  52% (319/612)
+2026-03-19T04:23:44.2836486Z Receiving objects:  53% (325/612)
+2026-03-19T04:23:44.2846786Z Receiving objects:  54% (331/612)
+2026-03-19T04:23:44.2848409Z Receiving objects:  55% (337/612)
+2026-03-19T04:23:44.2854458Z Receiving objects:  56% (343/612)
+2026-03-19T04:23:44.2857402Z Receiving objects:  57% (349/612)
+2026-03-19T04:23:44.2860152Z Receiving objects:  58% (355/612)
+2026-03-19T04:23:44.2861837Z Receiving objects:  59% (362/612)
+2026-03-19T04:23:44.2864495Z Receiving objects:  60% (368/612)
+2026-03-19T04:23:44.2871036Z Receiving objects:  61% (374/612)
+2026-03-19T04:23:44.2874278Z Receiving objects:  62% (380/612)
+2026-03-19T04:23:44.2877798Z Receiving objects:  63% (386/612)
+2026-03-19T04:23:44.2879415Z Receiving objects:  64% (392/612)
+2026-03-19T04:23:44.2881308Z Receiving objects:  65% (398/612)
+2026-03-19T04:23:44.2956115Z Receiving objects:  66% (404/612)
+2026-03-19T04:23:44.2959026Z Receiving objects:  67% (411/612)
+2026-03-19T04:23:44.2960811Z Receiving objects:  68% (417/612)
+2026-03-19T04:23:44.2962811Z Receiving objects:  69% (423/612)
+2026-03-19T04:23:44.2964657Z Receiving objects:  70% (429/612)
+2026-03-19T04:23:44.2966388Z Receiving objects:  71% (435/612)
+2026-03-19T04:23:44.2968161Z Receiving objects:  72% (441/612)
+2026-03-19T04:23:44.2969884Z Receiving objects:  73% (447/612)
+2026-03-19T04:23:44.2971761Z Receiving objects:  74% (453/612)
+2026-03-19T04:23:44.2973541Z Receiving objects:  75% (459/612)
+2026-03-19T04:23:44.2975315Z Receiving objects:  76% (466/612)
+2026-03-19T04:23:44.2977085Z Receiving objects:  77% (472/612)
+2026-03-19T04:23:44.2978958Z Receiving objects:  78% (478/612)
+2026-03-19T04:23:44.2980648Z Receiving objects:  79% (484/612)
+2026-03-19T04:23:44.2982582Z Receiving objects:  80% (490/612)
+2026-03-19T04:23:44.2986374Z Receiving objects:  81% (496/612)
+2026-03-19T04:23:44.2998067Z Receiving objects:  82% (502/612)
+2026-03-19T04:23:44.3001048Z Receiving objects:  83% (508/612)
+2026-03-19T04:23:44.3003581Z Receiving objects:  84% (515/612)
+2026-03-19T04:23:44.3006676Z Receiving objects:  85% (521/612)
+2026-03-19T04:23:44.3012476Z Receiving objects:  86% (527/612)
+2026-03-19T04:23:44.3017994Z Receiving objects:  87% (533/612)
+2026-03-19T04:23:44.3025877Z Receiving objects:  88% (539/612)
+2026-03-19T04:23:44.3031758Z Receiving objects:  89% (545/612)
+2026-03-19T04:23:44.3034560Z Receiving objects:  90% (551/612)
+2026-03-19T04:23:44.3039579Z Receiving objects:  91% (557/612)
+2026-03-19T04:23:44.3071687Z Receiving objects:  92% (564/612)
+2026-03-19T04:23:44.3075227Z remote: Total 612 (delta 47), reused 479 (delta 38), pack-reused 0 (from 0)        
+2026-03-19T04:23:44.3086502Z Receiving objects:  93% (570/612)
+2026-03-19T04:23:44.3090054Z Receiving objects:  94% (576/612)
+2026-03-19T04:23:44.3092035Z Receiving objects:  95% (582/612)
+2026-03-19T04:23:44.3093869Z Receiving objects:  96% (588/612)
+2026-03-19T04:23:44.3097552Z Receiving objects:  97% (594/612)
+2026-03-19T04:23:44.3100125Z Receiving objects:  98% (600/612)
+2026-03-19T04:23:44.3102507Z Receiving objects:  99% (606/612)
+2026-03-19T04:23:44.3103905Z Receiving objects: 100% (612/612)
+2026-03-19T04:23:44.3105300Z Receiving objects: 100% (612/612), 3.33 MiB | 15.92 MiB/s, done.
+2026-03-19T04:23:44.3109965Z Resolving deltas:   0% (0/47)
+2026-03-19T04:23:44.3112312Z Resolving deltas:   2% (1/47)
+2026-03-19T04:23:44.3114070Z Resolving deltas:   4% (2/47)
+2026-03-19T04:23:44.3115743Z Resolving deltas:   6% (3/47)
+2026-03-19T04:23:44.3117449Z Resolving deltas:   8% (4/47)
+2026-03-19T04:23:44.3119112Z Resolving deltas:  10% (5/47)
+2026-03-19T04:23:44.3120763Z Resolving deltas:  12% (6/47)
+2026-03-19T04:23:44.3122499Z Resolving deltas:  14% (7/47)
+2026-03-19T04:23:44.3124066Z Resolving deltas:  17% (8/47)
+2026-03-19T04:23:44.3125430Z Resolving deltas:  19% (9/47)
+2026-03-19T04:23:44.3126865Z Resolving deltas:  21% (10/47)
+2026-03-19T04:23:44.3128320Z Resolving deltas:  23% (11/47)
+2026-03-19T04:23:44.3129932Z Resolving deltas:  25% (12/47)
+2026-03-19T04:23:44.3132867Z Resolving deltas:  27% (13/47)
+2026-03-19T04:23:44.3134619Z Resolving deltas:  29% (14/47)
+2026-03-19T04:23:44.3135895Z Resolving deltas:  31% (15/47)
+2026-03-19T04:23:44.3136914Z Resolving deltas:  34% (16/47)
+2026-03-19T04:23:44.3138175Z Resolving deltas:  36% (17/47)
+2026-03-19T04:23:44.3139157Z Resolving deltas:  38% (18/47)
+2026-03-19T04:23:44.3140135Z Resolving deltas:  40% (19/47)
+2026-03-19T04:23:44.3141289Z Resolving deltas:  42% (20/47)
+2026-03-19T04:23:44.3142270Z Resolving deltas:  44% (21/47)
+2026-03-19T04:23:44.3143245Z Resolving deltas:  46% (22/47)
+2026-03-19T04:23:44.3144249Z Resolving deltas:  48% (23/47)
+2026-03-19T04:23:44.3145394Z Resolving deltas:  51% (24/47)
+2026-03-19T04:23:44.3146388Z Resolving deltas:  53% (25/47)
+2026-03-19T04:23:44.3147374Z Resolving deltas:  55% (26/47)
+2026-03-19T04:23:44.3148351Z Resolving deltas:  57% (27/47)
+2026-03-19T04:23:44.3149325Z Resolving deltas:  59% (28/47)
+2026-03-19T04:23:44.3150313Z Resolving deltas:  61% (29/47)
+2026-03-19T04:23:44.3151422Z Resolving deltas:  63% (30/47)
+2026-03-19T04:23:44.3152401Z Resolving deltas:  65% (31/47)
+2026-03-19T04:23:44.3153381Z Resolving deltas:  68% (32/47)
+2026-03-19T04:23:44.3154519Z Resolving deltas:  70% (33/47)
+2026-03-19T04:23:44.3155778Z Resolving deltas:  72% (34/47)
+2026-03-19T04:23:44.3156769Z Resolving deltas:  74% (35/47)
+2026-03-19T04:23:44.3157752Z Resolving deltas:  76% (36/47)
+2026-03-19T04:23:44.3158731Z Resolving deltas:  78% (37/47)
+2026-03-19T04:23:44.3159724Z Resolving deltas:  82% (39/47)
+2026-03-19T04:23:44.3160713Z Resolving deltas:  85% (40/47)
+2026-03-19T04:23:44.3161894Z Resolving deltas:  87% (41/47)
+2026-03-19T04:23:44.3162912Z Resolving deltas:  89% (42/47)
+2026-03-19T04:23:44.3164194Z Resolving deltas:  91% (43/47)
+2026-03-19T04:23:44.3165667Z Resolving deltas:  93% (44/47)
+2026-03-19T04:23:44.3166745Z Resolving deltas:  95% (45/47)
+2026-03-19T04:23:44.3167756Z Resolving deltas:  97% (46/47)
+2026-03-19T04:23:44.3168743Z Resolving deltas: 100% (47/47)
+2026-03-19T04:23:44.3169750Z Resolving deltas: 100% (47/47), done.
+2026-03-19T04:23:44.3236338Z From https://github.com/thebitnomad/trythis
+2026-03-19T04:23:44.3240085Z  * [new ref]         d42ebb703e491c7a985b39defde83aea5cfee972 -> origin/main
+2026-03-19T04:23:44.3271213Z ##[debug]0
+2026-03-19T04:23:44.3272936Z ##[debug]
+2026-03-19T04:23:44.3274240Z ::endgroup::
+2026-03-19T04:23:44.3275267Z ##[endgroup]
+2026-03-19T04:23:44.3276735Z ::group::Determining the checkout info
+2026-03-19T04:23:44.3277882Z ##[group]Determining the checkout info
+2026-03-19T04:23:44.3279469Z ::endgroup::
+2026-03-19T04:23:44.3280617Z ##[endgroup]
+2026-03-19T04:23:44.3282432Z ::group::Checking out the ref
+2026-03-19T04:23:44.3283432Z ##[group]Checking out the ref
+2026-03-19T04:23:44.3285068Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-03-19T04:23:44.3762603Z Switched to a new branch 'main'
+2026-03-19T04:23:44.3764038Z branch 'main' set up to track 'origin/main'.
+2026-03-19T04:23:44.3769841Z ##[debug]0
+2026-03-19T04:23:44.3772455Z ##[debug]branch 'main' set up to track 'origin/main'.
+2026-03-19T04:23:44.3774267Z ##[debug]
+2026-03-19T04:23:44.3776336Z ::endgroup::
+2026-03-19T04:23:44.3777421Z ##[endgroup]
+2026-03-19T04:23:44.3800730Z ##[debug]0
+2026-03-19T04:23:44.3803461Z ##[debug]commit d42ebb703e491c7a985b39defde83aea5cfee972
+2026-03-19T04:23:44.3806196Z ##[debug]Author: Ivan Schroll <134553365+thebitnomad@users.noreply.github.com>
+2026-03-19T04:23:44.3808861Z ##[debug]Date:   Tue Mar 17 15:59:07 2026 -0300
+2026-03-19T04:23:44.3810193Z ##[debug]
+2026-03-19T04:23:44.3811498Z ##[debug]    Refactor package.json with updated metadata and dependencies
+2026-03-19T04:23:44.3813135Z ##[debug]    
+2026-03-19T04:23:44.3815116Z ##[debug]    Updated package.json to reflect new package details and dependencies.
+2026-03-19T04:23:44.3816862Z ##[debug]
+2026-03-19T04:23:44.3817784Z [command]/usr/bin/git log -1 --format='%H'
+2026-03-19T04:23:44.3822725Z 'd42ebb703e491c7a985b39defde83aea5cfee972'
+2026-03-19T04:23:44.3826178Z ##[debug]0
+2026-03-19T04:23:44.3828490Z ##[debug]'d42ebb703e491c7a985b39defde83aea5cfee972'
+2026-03-19T04:23:44.3830239Z ##[debug]
+2026-03-19T04:23:44.3832647Z ##[debug]Unsetting HOME override
+2026-03-19T04:23:44.3840027Z ::remove-matcher owner=checkout-git::
+2026-03-19T04:23:44.3856519Z ##[debug]Removed matchers: 'checkout-git'
+2026-03-19T04:23:44.3895947Z ##[debug]Node Action run completed with exit code 0
+2026-03-19T04:23:44.3933248Z ##[debug]Save intra-action state isPost = true
+2026-03-19T04:23:44.3934872Z ##[debug]Save intra-action state setSafeDirectory = true
+2026-03-19T04:23:44.3936880Z ##[debug]Save intra-action state repositoryPath = /home/runner/work/trythis/trythis
+2026-03-19T04:23:44.3946124Z ##[debug]Finishing: Run actions/checkout@v3
+2026-03-19T04:23:44.3970351Z ##[debug]Evaluating condition for step: 'Install Node'
+2026-03-19T04:23:44.3975134Z ##[debug]Evaluating: success()
+2026-03-19T04:23:44.3976454Z ##[debug]Evaluating success:
+2026-03-19T04:23:44.3977884Z ##[debug]=> true
+2026-03-19T04:23:44.3979062Z ##[debug]Result: true
+2026-03-19T04:23:44.3980580Z ##[debug]Starting: Install Node
+2026-03-19T04:23:44.4041800Z ##[debug]Register post job cleanup for action: actions/setup-node@v3
+2026-03-19T04:23:44.4064659Z ##[debug]Loading inputs
+2026-03-19T04:23:44.4097297Z ##[debug]Evaluating: (((github.server_url == 'https://github.com') && github.token) || '')
+2026-03-19T04:23:44.4099097Z ##[debug]Evaluating Or:
+2026-03-19T04:23:44.4102037Z ##[debug]..Evaluating And:
+2026-03-19T04:23:44.4104471Z ##[debug]....Evaluating Equal:
+2026-03-19T04:23:44.4106182Z ##[debug]......Evaluating Index:
+2026-03-19T04:23:44.4107207Z ##[debug]........Evaluating github:
+2026-03-19T04:23:44.4108258Z ##[debug]........=> Object
+2026-03-19T04:23:44.4109264Z ##[debug]........Evaluating String:
+2026-03-19T04:23:44.4110281Z ##[debug]........=> 'server_url'
+2026-03-19T04:23:44.4111625Z ##[debug]......=> 'https://github.com'
+2026-03-19T04:23:44.4112706Z ##[debug]......Evaluating String:
+2026-03-19T04:23:44.4113726Z ##[debug]......=> 'https://github.com'
+2026-03-19T04:23:44.4118114Z ##[debug]....=> true
+2026-03-19T04:23:44.4119161Z ##[debug]....Evaluating Index:
+2026-03-19T04:23:44.4120140Z ##[debug]......Evaluating github:
+2026-03-19T04:23:44.4121355Z ##[debug]......=> Object
+2026-03-19T04:23:44.4122294Z ##[debug]......Evaluating String:
+2026-03-19T04:23:44.4123257Z ##[debug]......=> 'token'
+2026-03-19T04:23:44.4124652Z ##[debug]....=> '***'
+2026-03-19T04:23:44.4125762Z ##[debug]..=> '***'
+2026-03-19T04:23:44.4127051Z ##[debug]=> '***'
+2026-03-19T04:23:44.4132803Z ##[debug]Expanded: ((('https://github.com' == 'https://github.com') && '***') || '')
+2026-03-19T04:23:44.4134873Z ##[debug]Result: '***'
+2026-03-19T04:23:44.4140660Z ##[debug]Loading env
+2026-03-19T04:23:44.4154343Z ##[group]Run actions/setup-node@v3
+2026-03-19T04:23:44.4155277Z with:
+2026-03-19T04:23:44.4155953Z   node-version: 20.x
+2026-03-19T04:23:44.4156740Z   always-auth: false
+2026-03-19T04:23:44.4157593Z   check-latest: false
+2026-03-19T04:23:44.4159080Z   token: ***
+2026-03-19T04:23:44.4160334Z ##[endgroup]
+2026-03-19T04:23:44.5907847Z ##[debug]isExplicit: 
+2026-03-19T04:23:44.5909741Z ##[debug]explicit? false
+2026-03-19T04:23:44.5921430Z ##[debug]isExplicit: 20.20.1
+2026-03-19T04:23:44.5923400Z ##[debug]explicit? true
+2026-03-19T04:23:44.5929183Z ##[debug]isExplicit: 22.22.1
+2026-03-19T04:23:44.5931219Z ##[debug]explicit? true
+2026-03-19T04:23:44.5932714Z ##[debug]isExplicit: 24.14.0
+2026-03-19T04:23:44.5934988Z ##[debug]explicit? true
+2026-03-19T04:23:44.5936352Z ##[debug]evaluating 3 versions
+2026-03-19T04:23:44.5957248Z ##[debug]matched: 20.20.1
+2026-03-19T04:23:44.5959842Z ##[debug]checking cache: /opt/hostedtoolcache/node/20.20.1/x64
+2026-03-19T04:23:44.5961827Z ##[debug]Found tool in cache node 20.20.1 x64
+2026-03-19T04:23:44.5963325Z Found in cache @ /opt/hostedtoolcache/node/20.20.1/x64
+2026-03-19T04:23:44.5965784Z ::group::Environment details
+2026-03-19T04:23:44.5966713Z ##[group]Environment details
+2026-03-19T04:23:44.9030062Z node: v20.20.1
+2026-03-19T04:23:44.9033811Z npm: 10.8.2
+2026-03-19T04:23:44.9035006Z yarn: 1.22.22
+2026-03-19T04:23:44.9037338Z ::endgroup::
+2026-03-19T04:23:44.9038525Z ##[endgroup]
+2026-03-19T04:23:44.9048344Z ##[add-matcher]/home/runner/work/_actions/actions/setup-node/v3/.github/tsc.json
+2026-03-19T04:23:44.9077439Z ##[debug]Added matchers: 'tsc'. Problem matchers scan action output for known warning or error strings and report these inline.
+2026-03-19T04:23:44.9080178Z ##[add-matcher]/home/runner/work/_actions/actions/setup-node/v3/.github/eslint-stylish.json
+2026-03-19T04:23:44.9092713Z ##[debug]Added matchers: 'eslint-stylish'. Problem matchers scan action output for known warning or error strings and report these inline.
+2026-03-19T04:23:44.9095877Z ##[add-matcher]/home/runner/work/_actions/actions/setup-node/v3/.github/eslint-compact.json
+2026-03-19T04:23:44.9100277Z ##[debug]Added matchers: 'eslint-compact'. Problem matchers scan action output for known warning or error strings and report these inline.
+2026-03-19T04:23:44.9103629Z ##[debug]Node Action run completed with exit code 0
+2026-03-19T04:23:44.9109126Z ##[debug]Set output node-version = v20.20.1
+2026-03-19T04:23:44.9110709Z ##[debug]Finishing: Install Node
+2026-03-19T04:23:44.9128269Z ##[debug]Evaluating condition for step: 'Enable Corepack and Set Yarn Version'
+2026-03-19T04:23:44.9131893Z ##[debug]Evaluating: success()
+2026-03-19T04:23:44.9133050Z ##[debug]Evaluating success:
+2026-03-19T04:23:44.9134202Z ##[debug]=> true
+2026-03-19T04:23:44.9135243Z ##[debug]Result: true
+2026-03-19T04:23:44.9136677Z ##[debug]Starting: Enable Corepack and Set Yarn Version
+2026-03-19T04:23:44.9151853Z ##[debug]Loading inputs
+2026-03-19T04:23:44.9154307Z ##[debug]Loading env
+2026-03-19T04:23:44.9175799Z ##[group]Run corepack enable
+2026-03-19T04:23:44.9176776Z [36;1mcorepack enable[0m
+2026-03-19T04:23:44.9177751Z [36;1mcorepack prepare yarn@4.x --activate[0m
+2026-03-19T04:23:44.9216384Z shell: /usr/bin/bash -e {0}
+2026-03-19T04:23:44.9217226Z ##[endgroup]
+2026-03-19T04:23:44.9275416Z ##[debug]/usr/bin/bash -e /home/runner/work/_temp/fa8776f0-089c-41b1-8670-e9a0585bd942.sh
+2026-03-19T04:23:45.2785923Z Preparing yarn@4.x for immediate activation...
+2026-03-19T04:23:45.4542764Z ##[debug]Finishing: Enable Corepack and Set Yarn Version
+2026-03-19T04:23:45.4549872Z ##[debug]Evaluating condition for step: 'Install packages'
+2026-03-19T04:23:45.4552640Z ##[debug]Evaluating: success()
+2026-03-19T04:23:45.4553053Z ##[debug]Evaluating success:
+2026-03-19T04:23:45.4553486Z ##[debug]=> true
+2026-03-19T04:23:45.4553840Z ##[debug]Result: true
+2026-03-19T04:23:45.4554425Z ##[debug]Starting: Install packages
+2026-03-19T04:23:45.4562395Z ##[debug]Loading inputs
+2026-03-19T04:23:45.4563605Z ##[debug]Loading env
+2026-03-19T04:23:45.4567701Z ##[group]Run yarn install --immutable
+2026-03-19T04:23:45.4568007Z [36;1myarn install --immutable[0m
+2026-03-19T04:23:45.4568342Z [36;1myarn --cwd proto-extract install --immutable[0m
+2026-03-19T04:23:45.4597349Z shell: /usr/bin/bash -e {0}
+2026-03-19T04:23:45.4597646Z ##[endgroup]
+2026-03-19T04:23:45.4628108Z ##[debug]/usr/bin/bash -e /home/runner/work/_temp/278f5be2-2fab-4c61-a4c8-23ccab53d52f.sh
+2026-03-19T04:23:45.5178284Z ! Corepack is about to download https://repo.yarnpkg.com/4.9.2/packages/yarnpkg-cli/bin/yarn.js
+2026-03-19T04:23:45.9826747Z [94m➤[39m YN0000: · Yarn 4.9.2
+2026-03-19T04:23:45.9982791Z [91m➤[39m YN0028: · The lockfile would have been created by this install, which is explicitly forbidden.
+2026-03-19T04:23:45.9983605Z [91m➤[39m YN0000: · Failed with errors in 0s 17ms
+2026-03-19T04:23:46.0073110Z ##[error]Process completed with exit code 1.
+2026-03-19T04:23:46.0086013Z ##[debug]Finishing: Install packages
+2026-03-19T04:23:46.0104471Z ##[debug]Evaluating condition for step: 'Update WAProto.proto'
+2026-03-19T04:23:46.0106906Z ##[debug]Evaluating: success()
+2026-03-19T04:23:46.0107296Z ##[debug]Evaluating success:
+2026-03-19T04:23:46.0107709Z ##[debug]=> false
+2026-03-19T04:23:46.0108164Z ##[debug]Result: false
+2026-03-19T04:23:46.0115933Z ##[debug]Evaluating condition for step: 'GenerateStatics'
+2026-03-19T04:23:46.0117591Z ##[debug]Evaluating: success()
+2026-03-19T04:23:46.0117976Z ##[debug]Evaluating success:
+2026-03-19T04:23:46.0118371Z ##[debug]=> false
+2026-03-19T04:23:46.0118734Z ##[debug]Result: false
+2026-03-19T04:23:46.0123541Z ##[debug]Evaluating condition for step: 'Update baileys-version.json'
+2026-03-19T04:23:46.0124936Z ##[debug]Evaluating: success()
+2026-03-19T04:23:46.0125313Z ##[debug]Evaluating success:
+2026-03-19T04:23:46.0125834Z ##[debug]=> false
+2026-03-19T04:23:46.0126276Z ##[debug]Result: false
+2026-03-19T04:23:46.0131040Z ##[debug]Evaluating condition for step: 'Create Pull Request'
+2026-03-19T04:23:46.0132860Z ##[debug]Evaluating: success()
+2026-03-19T04:23:46.0133273Z ##[debug]Evaluating success:
+2026-03-19T04:23:46.0133653Z ##[debug]=> false
+2026-03-19T04:23:46.0134059Z ##[debug]Result: false
+2026-03-19T04:23:46.0138977Z ##[debug]Evaluating condition for step: 'Post Install Node'
+2026-03-19T04:23:46.0140270Z ##[debug]Evaluating: success()
+2026-03-19T04:23:46.0140639Z ##[debug]Evaluating success:
+2026-03-19T04:23:46.0141238Z ##[debug]=> false
+2026-03-19T04:23:46.0141622Z ##[debug]Result: false
+2026-03-19T04:23:46.0145977Z ##[debug]Evaluating condition for step: 'Post Run actions/checkout@v3'
+2026-03-19T04:23:46.0147998Z ##[debug]Evaluating: always()
+2026-03-19T04:23:46.0148382Z ##[debug]Evaluating always:
+2026-03-19T04:23:46.0149176Z ##[debug]=> true
+2026-03-19T04:23:46.0149571Z ##[debug]Result: true
+2026-03-19T04:23:46.0150113Z ##[debug]Starting: Post Run actions/checkout@v3
+2026-03-19T04:23:46.0199476Z ##[debug]Loading inputs
+2026-03-19T04:23:46.0201233Z ##[debug]Evaluating: github.repository
+2026-03-19T04:23:46.0201570Z ##[debug]Evaluating Index:
+2026-03-19T04:23:46.0201849Z ##[debug]..Evaluating github:
+2026-03-19T04:23:46.0202137Z ##[debug]..=> Object
+2026-03-19T04:23:46.0202387Z ##[debug]..Evaluating String:
+2026-03-19T04:23:46.0202660Z ##[debug]..=> 'repository'
+2026-03-19T04:23:46.0202966Z ##[debug]=> 'thebitnomad/trythis'
+2026-03-19T04:23:46.0203259Z ##[debug]Result: 'thebitnomad/trythis'
+2026-03-19T04:23:46.0205476Z ##[debug]Evaluating: github.token
+2026-03-19T04:23:46.0205801Z ##[debug]Evaluating Index:
+2026-03-19T04:23:46.0206053Z ##[debug]..Evaluating github:
+2026-03-19T04:23:46.0206325Z ##[debug]..=> Object
+2026-03-19T04:23:46.0206582Z ##[debug]..Evaluating String:
+2026-03-19T04:23:46.0206831Z ##[debug]..=> 'token'
+2026-03-19T04:23:46.0207361Z ##[debug]=> '***'
+2026-03-19T04:23:46.0207707Z ##[debug]Result: '***'
+2026-03-19T04:23:46.0217779Z ##[debug]Loading env
+2026-03-19T04:23:46.0222100Z Post job cleanup.
+2026-03-19T04:23:46.0931895Z ##[debug]Getting git version
+2026-03-19T04:23:46.0942869Z [command]/usr/bin/git version
+2026-03-19T04:23:46.0973451Z git version 2.53.0
+2026-03-19T04:23:46.0992653Z ##[debug]0
+2026-03-19T04:23:46.0993177Z ##[debug]git version 2.53.0
+2026-03-19T04:23:46.0993414Z ##[debug]
+2026-03-19T04:23:46.0994471Z ##[debug]Set git useragent to: git/2.53.0 (github-actions-checkout)
+2026-03-19T04:23:46.0997305Z ::add-mask::***
+2026-03-19T04:23:46.1010392Z Temporarily overriding HOME='/home/runner/work/_temp/f0e947d1-08c2-4dc6-8699-ba8e2d65fb12' before making global git config changes
+2026-03-19T04:23:46.1011371Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-19T04:23:46.1013900Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/trythis/trythis
+2026-03-19T04:23:46.1034333Z ##[debug]0
+2026-03-19T04:23:46.1034878Z ##[debug]
+2026-03-19T04:23:46.1040116Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-19T04:23:46.1063479Z ##[debug]1
+2026-03-19T04:23:46.1064085Z ##[debug]
+2026-03-19T04:23:46.1069988Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-19T04:23:46.1239353Z ##[debug]0
+2026-03-19T04:23:46.1239915Z ##[debug]
+2026-03-19T04:23:46.1243503Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-19T04:23:46.1259091Z http.https://github.com/.extraheader
+2026-03-19T04:23:46.1264263Z ##[debug]0
+2026-03-19T04:23:46.1265008Z ##[debug]http.https://github.com/.extraheader
+2026-03-19T04:23:46.1265472Z ##[debug]
+2026-03-19T04:23:46.1269468Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-03-19T04:23:46.1288288Z ##[debug]0
+2026-03-19T04:23:46.1288931Z ##[debug]
+2026-03-19T04:23:46.1293501Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-19T04:23:46.1457338Z ##[debug]0
+2026-03-19T04:23:46.1457967Z ##[debug]
+2026-03-19T04:23:46.1458564Z ##[debug]Unsetting HOME override
+2026-03-19T04:23:46.1504877Z ##[debug]Node Action run completed with exit code 0
+2026-03-19T04:23:46.1506911Z ##[debug]Finishing: Post Run actions/checkout@v3
+2026-03-19T04:23:46.1550766Z ##[debug]Starting: Complete job
+2026-03-19T04:23:46.1553211Z Uploading runner diagnostic logs
+2026-03-19T04:23:46.1564010Z ##[debug]Starting diagnostic file upload.
+2026-03-19T04:23:46.1564417Z ##[debug]Setting up diagnostic log folders.
+2026-03-19T04:23:46.1566283Z ##[debug]Creating diagnostic log files folder.
+2026-03-19T04:23:46.1574547Z ##[debug]Copying 1 worker diagnostic logs.
+2026-03-19T04:23:46.1582247Z ##[debug]Copying 1 runner diagnostic logs.
+2026-03-19T04:23:46.1583162Z ##[debug]Zipping diagnostic files.
+2026-03-19T04:23:46.1649426Z ##[debug]Uploading diagnostic metadata file.
+2026-03-19T04:23:46.1678497Z ##[debug]Diagnostic file upload complete.
+2026-03-19T04:23:46.1679075Z Completed runner diagnostic log upload
+2026-03-19T04:23:46.1679392Z Cleaning up orphan processes
+2026-03-19T04:23:46.1895528Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v3, actions/setup-node@v3. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-03-19T04:23:46.1898594Z ##[debug]Finishing: Complete job
+2026-03-19T04:23:46.1927922Z ##[debug]Finishing: update-proto
