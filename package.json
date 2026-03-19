@@ -1,25 +1,19 @@
 {
-  "name": "baileys",
+  "name": "9bot/baileys",
   "type": "module",
   "version": "7.0.0-rc.9",
-  "description": "A WebSockets library for interacting with WhatsApp Web",
+  "description": "WhatsApp API Modification By 9bot (Híbrido Atualizado)",
   "keywords": [
     "whatsapp",
     "automation",
-    "laurine-wabot",
     "baileys",
     "whatsapp-web",
-    "whatsapp-chat",
-    "whatsapp-group",
     "botwa",
-    "stvnnvs"
+    "9bot"
   ],
   "homepage": "https://github.com/WhiskeySockets/Baileys/",
-  "repository": {
-    "url": "git@github.com:WhiskeySockets/Baileys.git"
-  },
   "license": "MIT",
-  "author": "Rajeh Taher",
+  "author": "Rajeh Taher & 9bot",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -30,7 +24,7 @@
   "scripts": {
     "build:all": "npm run build && npm run build:docs",
     "build:docs": "typedoc",
-    "build": "tsc -P tsconfig.build.json && tsc-esm-fix --tsconfig=tsconfig.build.json --ext=.js",
+    "build": "tsc -P tsconfig.build.json --noImplicitAny false --skipLibCheck true && tsc-esm-fix --tsconfig=tsconfig.build.json --ext=.js",
     "build:tsc": "tsc",
     "changelog:last": "conventional-changelog -p angular -r 2",
     "changelog:preview": "conventional-changelog -p angular -u",
@@ -38,7 +32,7 @@
     "example": "tsx ./Example/example.ts",
     "gen:protobuf": "sh WAProto/GenerateStatics.sh",
     "format": "prettier --write \"src/**/*.{ts,js,json,md}\"",
-    "lint": "tsc && eslint src --ext .js,.ts",
+    "lint": "eslint src --ext .js,.ts",
     "lint:fix": "npm run format && npm run lint -- --fix",
     "prepack": "npm run build",
     "prepare": "npm run build",
@@ -59,7 +53,7 @@
     "chalk": "^4.1.2",
     "futoin-hkdf": "^1.5.1",
     "libphonenumber-js": "^1.10.20",
-    "libsignal": "git+https://github.com/whiskeysockets/libsignal-node",
+    "libsignal": "npm:@meta.inc/libsignal",
     "lodash": "^4.17.21",
     "lru-cache": "^11.1.0",
     "music-metadata": "^11.7.0",
@@ -69,7 +63,6 @@
     "pino": "^9.6",
     "protobufjs": "^7.2.4",
     "uuid": "^9.0.0",
-    "whatsapp-rust-bridge": "0.5.2",
     "ws": "^8.13.0"
   },
   "devDependencies": {
