@@ -1,4 +1,4 @@
-import { decrypt, encrypt } from 'libsignal/src/crypto'
+import { decrypt, encrypt } from '@meta.inc/libsignal/src/crypto'
 import { SenderKeyMessage } from './sender-key-message'
 import { SenderKeyName } from './sender-key-name'
 import { SenderKeyRecord } from './sender-key-record'
