@@ -112,7 +112,7 @@ export const generateRegistrationNode = (
 			supportFbidBotChatHistory: true,
 			supportAddOnHistorySyncMigration: undefined,
 			supportMessageAssociation: true,
-			// supportGroupHistory: false,
+			supportGroupHistory: false,
 			onDemandReady: undefined,
 			supportGuestChat: undefined
 		},

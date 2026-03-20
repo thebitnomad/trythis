@@ -2,7 +2,6 @@
   "name": "whatsapp-web-protobuf-extractor",
   "version": "1.0.0",
   "main": "index.js",
-  "packageManager": "yarn@4.9.2",
   "scripts": {
     "start": "node index.js"
   },

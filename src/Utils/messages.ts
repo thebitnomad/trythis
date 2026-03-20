@@ -622,7 +622,7 @@ export const generateWAMessageContent = async (
 			}
 
 			if (message.mentionAll) {
-				// key.contextInfo.nonJidMentions = 1
+				key.contextInfo.nonJidMentions = 1
 			}
 		}
 	}

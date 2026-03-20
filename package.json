@@ -1,19 +1,18 @@
 {
-  "name": "@yumenative/baileys",
+  "name": "baileys",
   "type": "module",
   "version": "7.0.0-rc.9",
-  "description": "WhatsApp API Modification By 9bot (Híbrido Atualizado 3.0)",
+  "description": "A WebSockets library for interacting with WhatsApp Web",
   "keywords": [
     "whatsapp",
-    "automation",
-    "baileys",
-    "whatsapp-web",
-    "botwa",
-    "9bot"
+    "automation"
   ],
   "homepage": "https://github.com/WhiskeySockets/Baileys/",
+  "repository": {
+    "url": "git@github.com:WhiskeySockets/Baileys.git"
+  },
   "license": "MIT",
-  "author": "Rajeh Taher & 9bot",
+  "author": "Rajeh Taher",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -24,15 +23,14 @@
   "scripts": {
     "build:all": "npm run build && npm run build:docs",
     "build:docs": "typedoc",
-    "build": "tsc -P tsconfig.build.json --skipLibCheck true --strict false ; tsc-esm-fix --tsconfig=tsconfig.build.json --ext=.js ; node -e \"const fs=require('fs'); const f='WAProto/index.js'; if(fs.existsSync(f)){ let c=fs.readFileSync(f,'utf8'); if(!c.includes('export const proto =')) fs.writeFileSync(f, c+'\\nexport const proto = module.exports.proto;\\n'); }\"",
-    "build:tsc": "tsc",
+    "build": "tsc -P tsconfig.build.json && tsc-esm-fix --tsconfig=tsconfig.build.json --ext=.js",
     "changelog:last": "conventional-changelog -p angular -r 2",
     "changelog:preview": "conventional-changelog -p angular -u",
     "changelog:update": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "example": "tsx ./Example/example.ts",
     "gen:protobuf": "sh WAProto/GenerateStatics.sh",
     "format": "prettier --write \"src/**/*.{ts,js,json,md}\"",
-    "lint": "eslint src --ext .js,.ts",
+    "lint": "tsc && eslint src --ext .js,.ts",
     "lint:fix": "npm run format && npm run lint -- --fix",
     "prepack": "npm run build",
     "prepare": "npm run build",
@@ -43,44 +41,29 @@
     "update:version": "tsx ./scripts/update-version.ts"
   },
   "dependencies": {
-    "@adiwajshing/keyed-db": "^0.2.4",
     "@cacheable/node-cache": "^1.4.0",
     "@hapi/boom": "^9.1.3",
     "async-mutex": "^0.5.0",
-    "audio-decode": "^2.1.3",
-    "axios": "^1.3.3",
-    "cache-manager": "4.0.1",
-    "chalk": "^4.1.2",
-    "futoin-hkdf": "^1.5.1",
-    "libphonenumber-js": "^1.10.20",
-    "libsignal": "npm:@meta.inc/libsignal",
-    "lodash": "^4.17.21",
+    "libsignal": "git+https://github.com/whiskeysockets/libsignal-node",
     "lru-cache": "^11.1.0",
     "music-metadata": "^11.7.0",
-    "node-cache": "^5.1.2",
-    "node-fetch": "^2.6.1",
     "p-queue": "^9.0.0",
     "pino": "^9.6",
     "protobufjs": "^7.2.4",
-    "uuid": "^9.0.0",
     "whatsapp-rust-bridge": "0.5.2",
     "ws": "^8.13.0"
   },
   "devDependencies": {
-    "@adiwajshing/eslint-config": "github:adiwajshing/eslint-config",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.31.0",
-    "@types/got": "^9.6.11",
     "@types/jest": "^30.0.0",
     "@types/node": "^20.9.0",
-    "@types/sharp": "^0.29.4",
     "@types/ws": "^8.0.0",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
     "@whiskeysockets/eslint-config": "^1.0.0",
     "conventional-changelog": "^7.1.1",
     "conventional-changelog-angular": "^8.0.0",
-    "conventional-changelog-cli": "^2.2.2",
     "esbuild-register": "^3.6.0",
     "eslint": "^9",
     "eslint-config-prettier": "^10.1.2",
@@ -95,11 +78,8 @@
     "pino-pretty": "^13.1.1",
     "prettier": "^3.5.3",
     "protobufjs-cli": "^1.1.3",
-    "qrcode-terminal": "^0.12.0",
     "release-it": "^15.10.3",
-    "sharp": "^0.30.5",
     "ts-jest": "^29.4.0",
-    "ts-node": "^10.8.1",
     "tsc-esm-fix": "^3.1.2",
     "tsx": "^4.20.3",
     "typedoc": "^0.27.9",
@@ -110,7 +90,6 @@
     "audio-decode": "^2.1.3",
     "jimp": "^1.6.0",
     "link-preview-js": "^3.0.0",
-    "qrcode-terminal": "^0.12.0",
     "sharp": "*"
   },
   "peerDependenciesMeta": {
@@ -121,12 +100,6 @@
       "optional": true
     },
     "link-preview-js": {
-      "optional": true
-    },
-    "qrcode-terminal": {
-      "optional": true
-    },
-    "sharp": {
       "optional": true
     }
   },

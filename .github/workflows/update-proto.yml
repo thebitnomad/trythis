@@ -29,7 +29,7 @@ jobs:
 
       - name: Install packages
         run: |
-          yarn install --no-immutable
+          yarn install --immutable
           yarn --cwd proto-extract install --immutable
 
       - name: Update WAProto.proto
@@ -41,17 +41,8 @@ jobs:
           echo "wa_version=$WA_VERSION" >> $GITHUB_OUTPUT
           echo "wa_js_url=$WA_JS_URL" >> $GITHUB_OUTPUT
 
-      - name: Fix proto syntax
-        run: |
-          sed -i 's/\brequired\b/optional/g' WAProto/WAProto.proto
-
       - name: GenerateStatics
         run: yarn gen:protobuf
-
-      - name: Fix WAProto ESM export
-        run: |
-          echo "" >> WAProto/index.js
-          echo "module.exports.proto = \$root.proto;" >> WAProto/index.js
 
       - name: Update baileys-version.json
         run: |
