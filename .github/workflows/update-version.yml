@@ -74,15 +74,13 @@ jobs:
           git push origin "$BRANCH_NAME"
 
           # Create PR using GitHub CLI
-          gh pr create \
+          PR_URL=$(gh pr create \
             --title "chore: update WhatsApp Web version" \
-            --body "Automated WhatsApp Web version update.
-
-          This PR updates the WhatsApp Web client revision to the latest version fetched from \`web.whatsapp.com\`.
-
-          **Files updated:**
-          - \`src/Defaults/baileys-version.json\`
-          - \`src/Defaults/index.ts\`
-          - \`src/Utils/generics.ts\`" \
+            --body "Automated WhatsApp Web version update." \
             --base master \
-            --head "$BRANCH_NAME" || echo "PR already exists or could not be created"
+            --head "$BRANCH_NAME" 2>/dev/null || echo "")
+
+          # Enable auto-merge if PR was created
+          if [ -n "$PR_URL" ]; then
+            gh pr merge "$PR_URL" --auto --merge
+          fi
