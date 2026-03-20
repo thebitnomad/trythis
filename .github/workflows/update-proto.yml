@@ -29,13 +29,15 @@ jobs:
 
       - name: Install packages
         run: |
-          yarn install --immutable
-          yarn --cwd proto-extract install --immutable
+          YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install
+          YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn --cwd proto-extract install
 
       - name: Update WAProto.proto
         id: wa_proto_info
         run: |
-          yarn --cwd proto-extract start > wa-logs.txt
+          mkdir -p WAProto
+          yarn --cwd proto-extract start > wa-logs.txt 2>&1
+          cat wa-logs.txt
           WA_VERSION=$(cat wa-logs.txt | perl -n -e'/Current version\: (.+)/ && print $1')
           WA_JS_URL=$(cat wa-logs.txt | perl -n -e'/Found source JS URL\: (.+)/ && print $1')
           echo "wa_version=$WA_VERSION" >> $GITHUB_OUTPUT
