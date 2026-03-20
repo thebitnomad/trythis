@@ -1,4 +1,4 @@
-import { calculateSignature, verifySignature } from 'libsignal/src/curve'
+import { calculateSignature, verifySignature } from '@meta.inc/libsignal/src/curve'
 import { proto } from '../../../WAProto/index.js'
 import { CiphertextMessage } from './ciphertext-message'
 
