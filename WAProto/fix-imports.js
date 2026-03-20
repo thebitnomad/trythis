@@ -73,6 +73,11 @@ try {
     return `${prefix}o.longs === String ? longToString(m.${field}${unsignedArg}) : o.longs === Number ? longToNumber(m.${field}${unsignedArg}) : m.${field};`
   })
 
+  // Adicionar export de proto
+  if (!content.includes('export { $root as proto }')) {
+    content = content + '\nexport { $root as proto };\n'
+  }
+
   writeFileSync(filePath, content, 'utf8')
   console.log(`✅ Fixed imports in ${filePath}`)
 } catch (error) {
