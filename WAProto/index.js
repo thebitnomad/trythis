@@ -97685,3 +97685,5 @@ export const proto = $root.proto = (() => {
 })();
 
 export { $root as default };
+
+export { $root as proto };
